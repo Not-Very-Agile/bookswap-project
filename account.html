@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Account</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <h2 style="text-align: center;">Account Page</h2>
+
+        <table style="margin-left: auto; margin-right: auto;">
+            <tr>
+                <td id="myName" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td id="myEmail" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td id="myAddress" style="border: 1px solid black;"></td>
+            </tr>
+        </table>
+
+        <script>
+             $.get("/account", function(data, status){
+                document.getElementById("myName").innerHTML = "Name: " + data.name;
+                document.getElementById("myEmail").innerHTML = "Email: " + data.email;
+                document.getElementById("myAddress").innerHTML = "Address: " + data.address;
+            });
+        </script>
+
+        <div style="margin-left: auto; margin-right: auto; width: 100px;">
+        <form method="get" action="/editProfile.html">
+        <button type="submit">Update Profile</button>
+        </form>
+        </div>
+
+    </body>
+</html>

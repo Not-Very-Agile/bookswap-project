@@ -12,9 +12,14 @@ var path = require('path');
 
 app.set('port', process.env.PORT || 7500);
 
-app.use (express.static (path.join (__dirname, 'views')));
+app.use(express.static (path.join (__dirname, 'views')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+function validateCreds(credentials) {
+    
+}
+
 
 app.get("/", function(req, res){
     // home page

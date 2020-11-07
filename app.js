@@ -28,7 +28,6 @@ app.get("/signup", function(req, res) {
     // new user create credentials
     var context = {};
     res.status(200);
-    console.log(context);
     res.sendFile(path.join(__dirname + '/views/signup.html'));
 });
 

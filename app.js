@@ -21,7 +21,7 @@ app.get("/", function(req, res){
     var context = {};
     res.status(200);
     console.log(context);
-    res.render("home");
+    res.sendFile(path.join(__dirname + '/views/index.html'));
 });
 
 app.get("/signup", function(req, res) {
@@ -37,7 +37,7 @@ app.get("/login", function(req, res){
     var context = {};
     res.status(200);
     console.log(context);
-    res.render("login");
+    res.sendFile(path.join(__dirname + '/views/login.html'));
 });
 
 app.get("/about", function(req, res){
@@ -45,7 +45,7 @@ app.get("/about", function(req, res){
     var context = {};
     res.status(200);
     console.log(context);
-    res.render("about");
+    res.sendFile(path.join(__dirname + '/views/about.html'));
 });
 
 app.use(function(req,res){

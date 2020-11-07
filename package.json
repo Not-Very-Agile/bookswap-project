@@ -1,0 +1,22 @@
+{
+  "name": "bookswap-project",
+  "version": "1.0.0",
+  "description": "361 Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Not-Very-Agile/bookswap-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Not-Very-Agile/bookswap-project/issues"
+  },
+  "homepage": "https://github.com/Not-Very-Agile/bookswap-project#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -12,7 +12,7 @@ var path = require('path');
 
 app.set('port', process.env.PORT || 7500);
 
-// app.use(express.static('views'));
+app.use (express.static (path.join (__dirname, 'views')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
@@ -48,12 +48,12 @@ app.get("/about", function(req, res){
     res.sendFile(path.join(__dirname + '/views/about.html'));
 });
 
-app.use(function(req,res){
+app.get(function(req,res){
     res.status(404);
     res.render('404');
 });
     
-app.use(function(err, req, res, next){
+app.get(function(err, req, res, next){
     console.error(err.stack);
     res.status(500);
     res.render('500');

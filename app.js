@@ -18,9 +18,7 @@ app.use(express.json());
 
 // called by myshelf route to check against credentials
 function validateCreds(creds) {
-    console.log('checking:', creds);
     for (let i=0; i < credentials.accounts.length; i++) {
-        console.log(credentials.accounts);
         if (creds['user'] == credentials.accounts[i]["user"]) {
             if (creds['pass'] == credentials.accounts[i]["pass"]) {
                 return true;
@@ -58,7 +56,6 @@ app.get("/login", function(req, res){
 app.post("/myshelf", function(req, res) {
     // validateCreds and send appropriate page
     creds = {'user': req.body.user, 'pass': req.body.pass}
-    console.log('going to check: \n', creds);
     if (validateCreds(creds) == true) {
         res.status(200);
         res.sendFile(path.join(__dirname + '/views/myshelf.html'));

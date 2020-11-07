@@ -2,20 +2,17 @@
 // Team Name: Not Very Agile
 // Contributors: Rohit Chaudhary, Brian Forsyth, Dan Allem, Emily McMullan, Will Coiner
 // Description: Node.js server utilizing the Handlebars templating engine in order to handle front end requests from the BookSwap client and also send requests to database and external API
-//test
+
 
 var express = require('express');
 var request = require('request');
 
 var app = express();
+var path = require('path');
 
-var handlebars = require('express-handlebars').create({defaultLayout:'main'});
-
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 7500);
 
-app.use(express.static('public'));
+// app.use(express.static('views'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
@@ -32,7 +29,7 @@ app.get("/signup", function(req, res) {
     var context = {};
     res.status(200);
     console.log(context);
-    res.render('signup');
+    res.sendFile(path.join(__dirname + '/views/signup.html'));
 });
 
 app.get("/login", function(req, res){

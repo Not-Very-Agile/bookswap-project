@@ -1,15 +1,23 @@
-document.getElementById("profileUpdate").addEventListener('click', function(){
+document.getElementById("profileUpdate").addEventListener('click', function(event){
     //need post function when signup is done $.get("/account", function(data, status){
-    if (document.getElementById("newFirstName").value !==null){
-      var name = document.getElementById("firstName").value
-    }
-    if (document.getElementById("newLastName").value !== null){
-        var lastName = document.getElementById("lastName")
-    }
-    if (document.getElementById("newEmail").value !==null){
+    let updateObject = createUpdateObject();
+    const url = "/editprofile"
+    fetch(url, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updateObject)
+    })
+    window.location.href = "/account";
+  });
+
+function createUpdateObject(){
+      var firstName = document.getElementById("firstName").value
+      var lastName = document.getElementById("lastName").value
       var email = document.getElementById("newEmail").value
-    }
-    if (document.getElementById("newAddress").value !==null){
       var address = document.getElementById("newAddress").value
-    }
-});
+      var username = document.getElementById("username").value
+      var object = {user: username, first_name: firstName, last_name: lastName, email: email, address: address}
+      return object
+};

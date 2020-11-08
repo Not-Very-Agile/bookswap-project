@@ -6,44 +6,49 @@
         <title>Account</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/editProfile.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
 
-        <h2 style="text-align: center;">Update Profile</h2>
-        <form style="margin-left: auto; margin-right: auto; width: 300px;" action="/account.html">
+        <div class="title"><h1>Update Profile</h1></div>
+        
+        <div class="update-form">
+        <form action="/account.html" id="updateForm">
+          <p></p>
+          <p class="edit-form-info">Fill in the information you would like updated and submit the form.</p>
             <fieldset>
-                <label> Name:
-                <input type="text" id="newName" style="border: 1px solid black;">
+                <div class="field">
+                <label> First name: <br>
+                <input type="text" id="newFirstName" style="border: 1px solid black;">
                 </label>
-                <br>
-                <label> Email:
+                </div>
+        
+                <div class="field">
+                <label> Last name: <br>
+                  <input type="text" id="newLastName" style="border: 1px solid black;">
+                  </label>
+                  </div>
+                 
+                <div class="field">
+                <label> Email: <br>
                 <input type="email" id="newEmail" style="border: 1px solid black;">
                 </label>
-                <br>
-                <label> Address:
+                </div>
+                
+                <div class="field">
+                <label> Address: <br>
                 <input type="text" id="newAddress" style="border: 1px solid black;">
                 </label>
-                <input style="margin-left: auto; margin-right: auto; width: 100px;" type="submit" value="Submit" id="profileUpdate">
+                </div>
+                <br>
+                <input style="margin: auto; width: 150px;" type="submit" value="Submit" id="profileUpdate">
             </fieldset>
         </form>
+        </div>
 
-        <script>
-            document.getElementById("profileUpdate").addEventListener('click', function(){
-            //need post function when signup is done $.get("/account", function(data, status){
-            if (document.getElementById("newName").value !==null){
-              var name = document.getElementById("newName").value
-            }
-            if (document.getElementById("newEmail").value !==null){
-              var email = document.getElementById("newName").value
-            }
-            if (document.getElementById("newAddress").value !==null){
-              var address = document.getElementById("newAddress").value
-            }
-        });
-
-        </script>
-
+        <script src="editProfile.js"></script>
+        <footer><a class="footer" href="https://www.pexels.com/photo/assorted-books-on-shelf-1370295/">Photo Credit</a></footer>
     </body>
 </html>

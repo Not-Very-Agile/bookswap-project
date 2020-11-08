@@ -8,11 +8,21 @@ body {
 .title {
   text-align: center;
   color: white;
+  font-size: x-large;
+}
+
+.field {
+  margin-bottom: 1em;
+}
+
+label { 
+  display: block; 
+  margin-bottom: .25em;
 }
 
 .signup-form {
   text-align: center;
   margin: auto;
   background-color: grey;
-  max-width: 70%;
+  max-width: 60%;
 }

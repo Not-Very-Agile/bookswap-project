@@ -57,6 +57,13 @@ app.get("/login", function(req, res){
     res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
+app.get("/account", function(req, res) {
+    // view user account information
+    var userInfo = req.body
+    res.status(200);
+    res.sendFile(path.join(__dirname + '/public/account.html'))
+});
+
 app.post("/signup", function(req, res) {
     var userInfo = req.body;
     var taken = false;
@@ -89,6 +96,7 @@ app.post("/myshelf", function(req, res) {
         res.sendFile(path.join(__dirname + '/public/logfail.html'));
     }
 });
+
 
 app.get("/about", function(req, res){
     // about page

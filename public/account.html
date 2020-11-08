@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Account</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h2 style="text-align: center;">Account Information</h2>
+
+        <table style="margin-left: auto; margin-right: auto;">
+            <tr>
+                <td id="myName" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td id="userName" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td id="myEmail" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td id="myAddress" style="border: 1px solid black;"></td>
+            </tr>
+        </table>
+
+
+        <h4 style="text-align: center;">Click <a href="/accountupdate">here</a> to update account information.</h4>
+
+        <h3 style="text-align: center;"><a href="/">Home</a></h3>
+        
+        <script>
+            credentials = {"accounts":[{"user":"test123","pass":"password","first_name":"","last_name":"M","email":"","address":""},{"user":"test1234","pass":"1","first_name":"sdfn","last_name":"jn","email":"kjb","address":"kjb"},{"user":"","pass":"","first_name":"","last_name":"","email":"","address":""},{"user":"sdfhsdfi","pass":"1","first_name":"kn","last_name":"kb","email":"jh","address":"bh"}]}
+
+             $.get("/account", function(data, status){
+                document.getElementById("userName").innerHTML = "User Name: " + credentials.accounts[1].user
+                document.getElementById("myName").innerHTML = "Name: " + credentials.accounts[1].first_name + " " + credentials.accounts[1].last_name
+                document.getElementById("myEmail").innerHTML = "Email: " + credentials.accounts[1].email
+                document.getElementById("myAddress").innerHTML = "Address: " + credentials.accounts[1].address
+            });
+        </script>
+
+    </body>
+</html>

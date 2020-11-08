@@ -46,7 +46,8 @@ app.get("/signup", function(req, res) {
     var context = {};
     res.status(200);
     res.sendFile(path.join(__dirname + '/public/signup.html'));
-});
+
+
 
 app.get("/login", function(req, res){
     // already existing user login page

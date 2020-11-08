@@ -6,6 +6,7 @@
 var credentials = require('./credentials.json')
 var express = require('express');
 var request = require('request');
+const fs = require("fs"); 
 
 var app = express();
 var path = require('path');
@@ -55,6 +56,17 @@ app.get("/login", function(req, res){
     console.log(context);
     res.sendFile(path.join(__dirname + '/public/login.html'));
 });
+
+app.post("/signup", function(req, res) {
+    var userInfo = req.body;
+    credentials.accounts.push(userInfo);
+    fs.writeFile("credentials.json", JSON.stringify(credentials), err => { 
+        // Checking for errors 
+        if (err) throw err;  
+        console.log("Done writing"); // Success 
+    });
+    res.send(true);
+})
 
 app.post("/myshelf", function(req, res) {
     // validateCreds and send appropriate page

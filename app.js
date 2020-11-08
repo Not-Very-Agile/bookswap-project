@@ -10,9 +10,13 @@ var request = require('request');
 var app = express();
 var path = require('path');
 
-app.set('port', process.env.PORT || 7500);
+app.set('port', process.env.PORT || 7600);
 
-app.use(express.static(path.join (__dirname, 'views')));
+console.log(__dirname + '/public');
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use(express.static(path.join (__dirname, 'css')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
@@ -34,15 +38,15 @@ app.get("/", function(req, res){
     var context = {};
     res.status(200);
     console.log(context);
-    res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 app.get("/signup", function(req, res) {
     // new user create credentials
     var context = {};
     res.status(200);
-    console.log(context);
-    res.sendFile(path.join(__dirname + '/views/signup.html'));
+    console.log("yep");
+    res.sendFile(path.join(__dirname + '/public/signup.html'));
 });
 
 app.get("/login", function(req, res){
@@ -50,7 +54,7 @@ app.get("/login", function(req, res){
     var context = {};
     res.status(200);
     console.log(context);
-    res.sendFile(path.join(__dirname + '/views/login.html'));
+    res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
 app.post("/myshelf", function(req, res) {
@@ -58,10 +62,10 @@ app.post("/myshelf", function(req, res) {
     creds = {'user': req.body.user, 'pass': req.body.pass}
     if (validateCreds(creds) == true) {
         res.status(200);
-        res.sendFile(path.join(__dirname + '/views/myshelf.html'));
+        res.sendFile(path.join(__dirname + '/public/myshelf.html'));
     } else {
         res.status(200);
-        res.sendFile(path.join(__dirname + '/views/logfail.html'));
+        res.sendFile(path.join(__dirname + '/public/logfail.html'));
     }
 });
 
@@ -70,7 +74,7 @@ app.get("/about", function(req, res){
     var context = {};
     res.status(200);
     console.log(context);
-    res.sendFile(path.join(__dirname + '/views/about.html'));
+    res.sendFile(path.join(__dirname + '/public/about.html'));
 });
 
 app.get(function(req,res){

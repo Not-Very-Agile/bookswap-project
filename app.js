@@ -57,6 +57,14 @@ app.get("/login", function(req, res){
     res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
+app.get("/editprofile", function(req, res){
+    // already existing user login page
+    var context = {};
+    res.status(200);
+    console.log(context);
+    res.sendFile(path.join(__dirname + '/public/editprofile.html'));
+});
+
 app.get("/account", function(req, res) {
     // view user account information
     var userInfo = req.body

@@ -1,5 +1,5 @@
 document.getElementById("profileUpdate").addEventListener('click', function(event){
-    //need post function when signup is done $.get("/account", function(data, status){
+    event.preventDefault();
     let updateObject = createUpdateObject();
     const url = "/editprofile"
     fetch(url, {
@@ -13,8 +13,8 @@ document.getElementById("profileUpdate").addEventListener('click', function(even
   });
 
 function createUpdateObject(){
-      var firstName = document.getElementById("firstName").value
-      var lastName = document.getElementById("lastName").value
+      var firstName = document.getElementById("newFirstName").value
+      var lastName = document.getElementById("newLastName").value
       var email = document.getElementById("newEmail").value
       var address = document.getElementById("newAddress").value
       var username = document.getElementById("username").value

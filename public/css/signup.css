@@ -39,3 +39,13 @@ a:link {
   text-decoration: none;
   color: white;
 }
+
+#username-error {
+  color: rgb(232, 0, 0);
+  font-size: medium;
+}
+
+#password-error {
+  color: rgb(232, 0, 0);
+  font-size: medium;
+}

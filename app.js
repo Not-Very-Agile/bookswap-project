@@ -59,13 +59,23 @@ app.get("/login", function(req, res){
 
 app.post("/signup", function(req, res) {
     var userInfo = req.body;
-    credentials.accounts.push(userInfo);
-    fs.writeFile("credentials.json", JSON.stringify(credentials), err => { 
+    var taken = false;
+    for (var i=0; i < credentials.accounts.length; i++){
+        if (credentials.accounts[i]['user'] === userInfo['user'])
+        taken = true;
+    }
+    if (taken === true) {
+        res.send(false)
+    }
+    else {
+        credentials.accounts.push(userInfo);
+        fs.writeFile("credentials.json", JSON.stringify(credentials), err => { 
         // Checking for errors 
         if (err) throw err;  
         console.log("Done writing"); // Success 
-    });
+        });
     res.send(true);
+    }
 })
 
 app.post("/myshelf", function(req, res) {

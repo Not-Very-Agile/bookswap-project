@@ -1,0 +1,18 @@
+body {
+  background-image: url(img/pexels-element-digital-1370295.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.title {
+  text-align: center;
+  color: white;
+}
+
+.signup-form {
+  text-align: center;
+  margin: auto;
+  background-color: grey;
+  max-width: 70%;
+}

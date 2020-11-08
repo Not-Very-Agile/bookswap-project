@@ -3,41 +3,70 @@
 // Contributors: Rohit Chaudhary, Brian Forsyth, Dan Allem, Emily McMullan, Will Coiner
 // Description: Node.js server utilizing the Handlebars templating engine in order to handle front end requests from the BookSwap client and also send requests to database and external API
 
-
+var credentials = require('./credentials.json')
 var express = require('express');
 var request = require('request');
 
 var app = express();
 var path = require('path');
 
-app.set('port', process.env.PORT || 7500);
+app.set('port', process.env.PORT || 7600);
 
-app.use (express.static (path.join (__dirname, 'views')));
+console.log(__dirname + '/public');
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use(express.static(path.join (__dirname, 'css')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+// called by myshelf route to check against credentials
+function validateCreds(creds) {
+    for (let i=0; i < credentials.accounts.length; i++) {
+        if (creds['user'] == credentials.accounts[i]["user"]) {
+            if (creds['pass'] == credentials.accounts[i]["pass"]) {
+                return true;
+            }
+            return false;
+        }
+    }
+    return false;
+}
 
 app.get("/", function(req, res){
     // home page
     var context = {};
     res.status(200);
     console.log(context);
-    res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 app.get("/signup", function(req, res) {
     // new user create credentials
     var context = {};
     res.status(200);
-    console.log(context);
-    res.sendFile(path.join(__dirname + '/views/signup.html'));
-});
+    res.sendFile(path.join(__dirname + '/public/signup.html'));
+
+
 
 app.get("/login", function(req, res){
     // already existing user login page
     var context = {};
     res.status(200);
     console.log(context);
-    res.sendFile(path.join(__dirname + '/views/login.html'));
+    res.sendFile(path.join(__dirname + '/public/login.html'));
+});
+
+app.post("/myshelf", function(req, res) {
+    // validateCreds and send appropriate page
+    creds = {'user': req.body.user, 'pass': req.body.pass}
+    if (validateCreds(creds) == true) {
+        res.status(200);
+        res.sendFile(path.join(__dirname + '/public/myshelf.html'));
+    } else {
+        res.status(200);
+        res.sendFile(path.join(__dirname + '/public/logfail.html'));
+    }
 });
 
 app.get("/about", function(req, res){
@@ -45,7 +74,7 @@ app.get("/about", function(req, res){
     var context = {};
     res.status(200);
     console.log(context);
-    res.sendFile(path.join(__dirname + '/views/about.html'));
+    res.sendFile(path.join(__dirname + '/public/about.html'));
 });
 
 app.get(function(req,res){

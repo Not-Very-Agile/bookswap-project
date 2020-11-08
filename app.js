@@ -34,6 +34,15 @@ function validateCreds(creds) {
     return false;
 }
 
+// checks for unique username
+function checkUsername(username) {
+    for (var i=0; i < credentials.accounts.length; i++){
+        if (credentials.accounts[i]['user'] === username['user'])
+        return true;
+    }
+    return false;
+}
+
 app.get("/", function(req, res){
     // home page
     var context = {};
@@ -74,11 +83,7 @@ app.get("/account", function(req, res) {
 
 app.post("/signup", function(req, res) {
     var userInfo = req.body;
-    var taken = false;
-    for (var i=0; i < credentials.accounts.length; i++){
-        if (credentials.accounts[i]['user'] === userInfo['user'])
-        taken = true;
-    }
+    var taken = checkUsername(userInfo);
     if (taken === true) {
         res.send(false)
     }

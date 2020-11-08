@@ -45,7 +45,8 @@ app.get("/signup", function(req, res) {
     // new user create credentials
     var context = {};
     res.status(200);
-    res.sendFile(path.join(__dirname + '/public/signup.html'));
+    res.sendFile(path.join(__dirname + '/public/signup.html'))
+});
 
 
 

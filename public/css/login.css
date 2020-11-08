@@ -10,19 +10,33 @@ body {
     color: white;
     font-size: x-large;
 }
+
+.field {
+    margin-bottom: .75em;
+}
   
-.home-container {
+label { 
+    display: block; 
+    margin-bottom: .10em;
+}
+  
+.login-form {
     text-align: center;
     margin: auto;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    color: white;
     background-color: grey;
     max-width: 60%;
 }
 
+.loginbtn {
+    margin-bottom: 1em;
+}
+
 a:link {
     text-decoration: none;
+}
+
+#homelink {
+    color: black;
 }
 
 .footer {

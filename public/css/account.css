@@ -4,28 +4,35 @@ body {
     background-size: cover;
     font-family: 'Quicksand', sans-serif;
   }
-
-.title {
+  
+  .title {
     text-align: center;
     color: white;
     font-size: x-large;
-}
+  }
   
-.home-container {
+  .field {
+    margin-bottom: .75em;
+  }
+
+  
+  .account-table{
     text-align: center;
     margin: auto;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    color: white;
     background-color: grey;
-    max-width: 60%;
-}
+    max-width: 40%;
+  }
 
-a:link {
-    text-decoration: none;
-}
+  .accounts {
+      padding-top: 20px;
+  }
 
-.footer {
-    text-decoration: none;
-    color: white;
-}
+  td {
+      border: 1px solid black;
+      border-width: 3px;
+  }
+
+
+  
+  
+

@@ -34,6 +34,15 @@ function validateCreds(creds) {
     return false;
 }
 
+// checks for unique username
+function checkUsername(username) {
+    for (var i=0; i < credentials.accounts.length; i++){
+        if (credentials.accounts[i]['user'] === username['user'])
+        return true;
+    }
+    return false;
+}
+
 app.get("/", function(req, res){
     // home page
     var context = {};
@@ -57,6 +66,14 @@ app.get("/login", function(req, res){
     res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
+app.get("/editprofile", function(req, res){
+    // already existing user login page
+    var context = {};
+    res.status(200);
+    console.log(context);
+    res.sendFile(path.join(__dirname + '/public/editprofile.html'));
+});
+
 app.get("/account", function(req, res) {
     // view user account information
     var userInfo = req.body
@@ -64,13 +81,10 @@ app.get("/account", function(req, res) {
     res.sendFile(path.join(__dirname + '/public/account.html'))
 });
 
+
 app.post("/signup", function(req, res) {
     var userInfo = req.body;
-    var taken = false;
-    for (var i=0; i < credentials.accounts.length; i++){
-        if (credentials.accounts[i]['user'] === userInfo['user'])
-        taken = true;
-    }
+    var taken = checkUsername(userInfo);
     if (taken === true) {
         res.send(false)
     }
@@ -97,6 +111,18 @@ app.post("/myshelf", function(req, res) {
     }
 });
 
+app.post("/editprofile", function(req, res){
+    var userInfo = req.body;
+    var index = null
+    for (var i=0; i < credentials.accounts.length; i++){
+        if (credentials.accounts[i]['user'] === userInfo['user'])
+        index = i;
+    }
+    credentials.accounts[index]['first_name'] = userInfo['first_name'];
+    credentials.accounts[index]['last_name'] = userInfo['last_name'];
+    credentials.accounts[index]['email'] = userInfo['email'];
+    credentials.accounts[index]['address'] = userInfo['address'];
+});
 
 app.get("/about", function(req, res){
     // about page

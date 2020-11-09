@@ -3,16 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BookSwap</title>
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Login to your account:</h1>
-    <form method='POST' action='/myshelf'>
-        <label>Username: </label><input type="text" name='user' id='user'>
-        <label>Password: </label><input type="password" name='pass' id='pass'>
-        <input type='submit' name='submit' id='submit'>
-    </form>
-    <h3><a href="/">Home</a></h3>
+    <div class="title"><h1>Login to your account:</h1></div>
+    <div class="login-form">
+        <form method='POST' action='/myshelf' style="border:1px solid #ccc">
+            <div class="container">
+                <h1>Login</h1>
+                <p>Enter the username and password to your account.</p>
+                <hr>
+
+                <div class="field">
+                    <label>Username: </label>
+                    <input type="text" name='user' id='user'>
+                </div>
+                <div class="field">
+                    <label>Password: </label>
+                    <input type="password" name='pass' id='pass'>
+                </div>
+                <input type='submit' name='submit' id='submit' class='loginbtn'>
+                <button name='home' class='homebtn' id='home'><a href="/" id='homelink'>Home</a></button>
+            </div>
+        </form>
+    </div>
+    <footer><a class="footer" href="https://www.pexels.com/photo/assorted-books-on-shelf-1370295/">Photo Credit</a></footer>
     <script src='../sendCreds.js'></script>
 </body>
 </html>

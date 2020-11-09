@@ -15,7 +15,7 @@
         <div class="title"><h1>Update Profile</h1></div>
         
         <div class="update-form">
-        <form action="/account.html" id="updateForm">
+        <form action="/account" id="updateForm">
           <p></p>
           <p class="edit-form-info">Fill in the information you would like updated and submit the form.</p>
             <fieldset>
@@ -42,13 +42,20 @@
                 <input type="text" id="newAddress" style="border: 1px solid black;">
                 </label>
                 </div>
+                
+                <div class="field">
+                    <p>Enter username to confirm changes. Username cannot be changed.</p>
+                    <label> Username: <br>
+                    <input type="text" id="username" style="border: 1px solid black;">
+                    </label>
+                    </div>
                 <br>
                 <input style="margin: auto; width: 150px;" type="submit" value="Submit" id="profileUpdate">
             </fieldset>
         </form>
         </div>
 
-        <script src="editProfile.js"></script>
+        <script src="js/editProfile.js"></script>
         <footer><a class="footer" href="https://www.pexels.com/photo/assorted-books-on-shelf-1370295/">Photo Credit</a></footer>
     </body>
 </html>

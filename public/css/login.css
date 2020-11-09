@@ -1,13 +1,14 @@
+*{
+    color:#fff;
+}
 body {
     background-image: linear-gradient(#00000099, #00000099), url(img/pexels-element-digital-1370295.jpg);
-    background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Quicksand', sans-serif;
   }
 
 .title {
     text-align: center;
-    color: white;
     font-size: x-large;
 }
 
@@ -41,5 +42,12 @@ a:link {
 
 .footer {
     text-decoration: none;
-    color: white;
+}
+
+.photo-credit{
+    textal
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 1%;
 }

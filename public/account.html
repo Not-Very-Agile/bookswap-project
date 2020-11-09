@@ -7,9 +7,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      
     </head>
     <body>
+        <div id="navigation"></div>
+
         <h2 style="text-align: center;">Account Information</h2>
 
         <table style="margin-left: auto; margin-right: auto;">
@@ -40,8 +44,9 @@
                 document.getElementById("myName").innerHTML = "Name: " + credentials.accounts[1].first_name + " " + credentials.accounts[1].last_name
                 document.getElementById("myEmail").innerHTML = "Email: " + credentials.accounts[1].email
                 document.getElementById("myAddress").innerHTML = "Address: " + credentials.accounts[1].address
-            });
+             }); 
         </script>
 
+           
     </body>
 </html>

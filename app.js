@@ -66,6 +66,14 @@ app.get("/login", function(req, res){
     res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
+app.get("/logfail", function(req, res){
+    // already existing user login page
+    var context = {};
+    res.status(200);
+    console.log(context);
+    res.sendFile(path.join(__dirname + '/public/logfail.html'));
+});
+
 app.get("/editprofile", function(req, res){
     // already existing user login page
     var context = {};
@@ -104,10 +112,10 @@ app.post("/myshelf", function(req, res) {
     creds = {'user': req.body.user, 'pass': req.body.pass}
     if (validateCreds(creds) == true) {
         res.status(200);
-        res.sendFile(path.join(__dirname + '/public/myshelf.html'));
+        res.send(true)
     } else {
         res.status(200);
-        res.sendFile(path.join(__dirname + '/public/logfail.html'));
+        res.send(false)
     }
 });
 

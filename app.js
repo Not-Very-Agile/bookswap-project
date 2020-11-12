@@ -7,7 +7,8 @@ var credentials = require('./credentials.json')
 var express = require('express');
 var request = require('request');
 const fs = require("fs"); 
-
+var mysql = require('./dbcon.js');
+require('dotenv').config();
 var app = express();
 var path = require('path');
 
@@ -150,6 +151,28 @@ app.get(function(err, req, res, next){
     res.status(500);
     res.render('500');
 });
+
+// Table Creation * CAUTION: Will RESET ALL TABLES AND RECREATE *
+app.get('/reset-table',function(req,res,next){
+    var context = {};
+    mysql.pool.query("DROP TABLE IF EXISTS Users", function(err){ //replace your connection pool with the your variable containing the connection pool
+      var createString = "CREATE TABLE Users("+
+      "userid INT PRIMARY KEY AUTO_INCREMENT,"+
+      "username VARCHAR(255) NOT NULL,"+
+      "firstname VARCHAR(255),"+
+      "lastname VARCHAR(255),"+
+      "email VARCHAR(255),"+
+      "address VARCHAR(255),"+
+      "password VARCHAR(255))";
+      mysql.pool.query(createString, function(err){
+        context.results = "Users Table reset";
+        console.log(err);
+        res.send(context.results);
+      })
+
+    });
+  });
+
 
 app.listen(app.get('port'), function(){
     console.log(`Express started on http://${process.env.HOSTNAME}:${app.get('port')}; press Ctrl-C to terminate.`);

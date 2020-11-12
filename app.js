@@ -43,6 +43,17 @@ function checkUsername(username) {
     return false;
 }
 
+// retrieves current user info
+function getUser(currentUser) {
+    var info = []
+    for (var i = 0; i < credentials.accounts.length; i++){
+        if (credentials.accounts[i]['user'] == currentUser) {
+            info.push(credentials.accounts[i])
+            return info
+        }
+    } return None
+}
+
 app.get("/", function(req, res){
     // home page
     var context = {};

@@ -7,7 +7,8 @@ var credentials = require('./credentials.json')
 var express = require('express');
 var request = require('request');
 const fs = require("fs"); 
-
+var mysql = require('./dbcon.js');
+require('dotenv').config();
 var app = express();
 var path = require('path');
 
@@ -66,6 +67,14 @@ app.get("/login", function(req, res){
     res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
+app.get("/logfail", function(req, res){
+    // already existing user login page
+    var context = {};
+    res.status(200);
+    console.log(context);
+    res.sendFile(path.join(__dirname + '/public/logfail.html'));
+});
+
 app.get("/editprofile", function(req, res){
     // already existing user login page
     var context = {};
@@ -80,6 +89,7 @@ app.get("/account", function(req, res) {
     res.status(200);
     res.sendFile(path.join(__dirname + '/public/account.html'))
 });
+
 
 app.post("/signup", function(req, res) {
     var userInfo = req.body;
@@ -103,10 +113,10 @@ app.post("/myshelf", function(req, res) {
     creds = {'user': req.body.user, 'pass': req.body.pass}
     if (validateCreds(creds) == true) {
         res.status(200);
-        res.sendFile(path.join(__dirname + '/public/myshelf.html'));
+        res.send(true)
     } else {
         res.status(200);
-        res.sendFile(path.join(__dirname + '/public/logfail.html'));
+        res.send(false)
     }
 });
 
@@ -141,6 +151,28 @@ app.get(function(err, req, res, next){
     res.status(500);
     res.render('500');
 });
+
+// Table Creation * CAUTION: Will RESET ALL TABLES AND RECREATE *
+app.get('/reset-table',function(req,res,next){
+    var context = {};
+    mysql.pool.query("DROP TABLE IF EXISTS Users", function(err){ //replace your connection pool with the your variable containing the connection pool
+      var createString = "CREATE TABLE Users("+
+      "userid INT PRIMARY KEY AUTO_INCREMENT,"+
+      "username VARCHAR(255) NOT NULL,"+
+      "firstname VARCHAR(255),"+
+      "lastname VARCHAR(255),"+
+      "email VARCHAR(255),"+
+      "address VARCHAR(255),"+
+      "password VARCHAR(255))";
+      mysql.pool.query(createString, function(err){
+        context.results = "Users Table reset";
+        console.log(err);
+        res.send(context.results);
+      })
+
+    });
+  });
+
 
 app.listen(app.get('port'), function(){
     console.log(`Express started on http://${process.env.HOSTNAME}:${app.get('port')}; press Ctrl-C to terminate.`);

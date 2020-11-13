@@ -6,24 +6,31 @@
         <title>Account</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/account.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="css/login.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      
     </head>
     <body>
-        <h2 style="text-align: center;">Account Information</h2>
+        <div id="navigation"></div>
 
-        <table style="margin-left: auto; margin-right: auto;">
-            <tr>
-                <td id="myName" style="border: 1px solid black;"></td>
+        <h2 class="title" style="text-align: center;">Account Information</h2>
+
+        <div class="account-table">
+        <table class="accounts" style="margin-left: auto; margin-right: auto;">
+            <tr class="field">
+                <td id="myName"></td>
             </tr>
             <tr>
-                <td id="userName" style="border: 1px solid black;"></td>
+                <td id="userName"></td>
             </tr>
             <tr>
-                <td id="myEmail" style="border: 1px solid black;"></td>
+                <td id="myEmail"></td>
             </tr>
             <tr>
-                <td id="myAddress" style="border: 1px solid black;"></td>
+                <td id="myAddress"></td>
             </tr>
         </table>
 
@@ -31,6 +38,7 @@
         <h4 style="text-align: center;">Click <a href="/editprofile">here</a> to update account information.</h4>
 
         <h3 style="text-align: center;"><a href="/">Home</a></h3>
+        </div>
         
         <script>
             credentials = {"accounts":[{"user":"test123","pass":"password","first_name":"","last_name":"M","email":"","address":""},{"user":"test1234","pass":"1","first_name":"sdfn","last_name":"jn","email":"kjb","address":"kjb"},{"user":"","pass":"","first_name":"","last_name":"","email":"","address":""},{"user":"sdfhsdfi","pass":"1","first_name":"kn","last_name":"kb","email":"jh","address":"bh"}]}
@@ -40,8 +48,9 @@
                 document.getElementById("myName").innerHTML = "Name: " + credentials.accounts[1].first_name + " " + credentials.accounts[1].last_name
                 document.getElementById("myEmail").innerHTML = "Email: " + credentials.accounts[1].email
                 document.getElementById("myAddress").innerHTML = "Address: " + credentials.accounts[1].address
-            });
+             }); 
         </script>
-
+        <script src="js/account.js"></script>
+           
     </body>
 </html>

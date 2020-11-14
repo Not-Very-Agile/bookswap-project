@@ -81,15 +81,6 @@ app.get("/account", function (req, res) {
     res.sendFile(path.join(__dirname + '/public/account.html'))
 });
 
-// checks for unique username
-function checkUsername(username) {
-    for (var i = 0; i < credentials.accounts.length; i++) {
-        if (credentials.accounts[i]['user'] === username['user'])
-            return true;
-    }
-    return false;
-}
-
 app.post("/signup", function (req, res) {
     var context = {}
     mysql.pool.query("SELECT * FROM Users WHERE username=?", [req.body.user], function(err, result){

@@ -9,23 +9,25 @@
 // covers.appendChild(firstCover);
 
 function addCover(book){
-    let coverHolder = document.createElement("div");
-    coverHolder.className = "cover-holder";
-    let cover = document.createElement("img");
-    cover.onerror = "this.onload = null; this.src = ;"
-    if(book.oclc)
-        cover.src = `http://covers.openlibrary.org/b/oclc/${book.oclc}-M.jpg`; 
+    let coverHolder = document.createElement("p");
+    coverHolder.innerText = `${book.title} by:${book.author}`
+    // let coverHolder = document.createElement("div");
+    // coverHolder.className = "cover-holder";
+    // let cover = document.createElement("img");
+    // cover.onerror = "this.onload = null; this.src = ;"
+    // if(book.oclc)
+    //     cover.src = `http://covers.openlibrary.org/b/oclc/${book.oclc}-M.jpg`; 
 
-    else if (book.isbn)
-        cover.src = `http://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`; 
+    // else if (book.isbn)
+    //     cover.src = `http://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`; 
 
-    else
-        cover.src = 'img/no_cover_book.jpg';
+    // else
+    //     cover.src = 'img/no_cover_book.jpg';
 
-    cover.alt = `${book.title} ${book.author}`
-    cover.className = "list-cover";
+    // cover.alt = `${book.title} ${book.author}`
+    // cover.className = "list-cover";
 
-    coverHolder.appendChild(cover)
+    // coverHolder.appendChild(cover)
     return coverHolder;
 }
 
@@ -36,8 +38,11 @@ function getBooksInfo(searchParam){
 
     request.open("GET", query, true);
     request.addEventListener('load', function(){
+        document.querySelector(".book-covers").innerHTML = "";
+
         searchResponse = JSON.parse(request.responseText);
         searchResponse = searchResponse.docs;
+        console.log(searchResponse)
         searchResponse = parseData(searchResponse);
         console.log(searchResponse);
 
@@ -65,13 +70,20 @@ function parseData(searchResults){
         bookResults[i] = {};
         let book = searchResults[i];
         bookResults[i].title = title = (book["title"]) ? book["title"] : "";
-        bookResults[i].author = author = book["author"] ? book["author"] : "";
+        bookResults[i].author = author = book["author_name"] ? book["author_name"][0] : "Author Not Listed";
         bookResults[i].isbn = isbn = book["isbn"] ? book["isbn"][0] : null;
         bookResults[i].oclc = oclc = book["oclc"] ? book["oclc"][0]  : null;        
     }
     return bookResults;
 }
 
+document.getElementById("submit-search").addEventListener("click", (event)=>{
+    let searchParam = document.getElementById("search-param").value;
+    searchParam = searchParam.split(' ').join('+');
+    console.log(searchParam)
+    getBooksInfo(searchParam);
+    event.preventDefault();
+})
 
-let toFind = "wheel of time".split(' ').join('+');
-getBooksInfo(toFind);
+// let toFind = "wheel of time".split(' ').join('+');
+// getBooksInfo(toFind);

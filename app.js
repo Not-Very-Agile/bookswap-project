@@ -35,15 +35,6 @@ function validateCreds(creds) {
     return false;
 }
 
-// checks for unique username
-function checkUsername(username) {
-    for (var i = 0; i < credentials.accounts.length; i++) {
-        if (credentials.accounts[i]['user'] === username['user'])
-            return true;
-    }
-    return false;
-}
-
 app.get("/", function (req, res) {
     // home page
     var context = {};
@@ -90,23 +81,42 @@ app.get("/account", function (req, res) {
     res.sendFile(path.join(__dirname + '/public/account.html'))
 });
 
+// checks for unique username
+function checkUsername(username) {
+    for (var i = 0; i < credentials.accounts.length; i++) {
+        if (credentials.accounts[i]['user'] === username['user'])
+            return true;
+    }
+    return false;
+}
 
 app.post("/signup", function (req, res) {
-    var userInfo = req.body;
-    var taken = checkUsername(userInfo);
-    if (taken === true) {
-        res.send(false)
-    }
-    else {
-        credentials.accounts.push(userInfo);
-        fs.writeFile("credentials.json", JSON.stringify(credentials), err => {
-            // Checking for errors 
-            if (err) throw err;
-            console.log("Done writing"); // Success 
-        });
-        res.send(true);
-    }
-})
+    var context = {}
+    mysql.pool.query("SELECT * FROM Users WHERE username=?", [req.body.user], function(err, result){
+        if(err){
+          next(err);
+          return;
+        }
+        if(result.length == 0){
+          mysql.pool.query("INSERT INTO Users (`username`, `first_name`, `last_name`, `email`, `address`, `password`) VALUES (?,?,?,?,?,?)",
+            [req.body.user, req.body.first_name, req.body.last_name, req.body.email, req.body.address, req.body.pass],
+            function(err, result){
+            if(err){
+            console.log(err)
+              next(err);
+              return;
+            }
+            console.log(result)
+            context.results = "Inserted " + result.affectedRows + " row.";
+            console.log(context.results);
+            res.send(true);
+          });
+        }
+        else {
+            res.send(false);
+        }
+      });
+});
 
 app.post("/myshelf", function (req, res) {
     // validateCreds and send appropriate page

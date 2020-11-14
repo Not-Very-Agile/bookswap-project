@@ -111,14 +111,20 @@ app.post("/signup", function (req, res) {
 
 app.post("/myshelf", function (req, res) {
     // validateCreds and send appropriate page
-    creds = { 'user': req.body.user, 'pass': req.body.pass }
-    if (validateCreds(creds) == true) {
-        res.status(200);
-        res.send(true)
-    } else {
-        res.status(200);
-        res.send(false)
-    }
+    var context = {}
+    mysql.pool.query("SELECT password FROM Users WHERE username=?", [req.body.user], function(err, result){
+        if(err){
+          next(err);
+          return;
+        }
+        var password = JSON.parse(JSON.stringify(result))[0].password;
+        if(password == req.body.pass){
+            res.send(true);
+        }
+        else {
+            res.send(false);
+        }
+      });
 });
 
 app.post("/editprofile", function (req, res) {

@@ -112,6 +112,14 @@ app.get("/search", function (req, res) {
     res.sendFile(path.join(__dirname + '/public/searchbooks.html'));
 });
 
+app.get("/addbook", function (req, res) {
+    // home page
+    var context = {};
+    res.status(200);
+    console.log(context);
+    res.sendFile(path.join(__dirname + '/public/addbook.html'));
+});
+
 app.post("/signup", function (req, res) {
     var context = {}
     mysql.pool.query("SELECT * FROM Users WHERE username=?", [req.body.user], function(err, result){
@@ -138,6 +146,23 @@ app.post("/signup", function (req, res) {
             res.send(false);
         }
       });
+});
+
+app.post("/addbook", function (req, res) {
+    // adds user book to bookshelf
+    mysql.pool.query("INSERT INTO Books (`title`, `author`, `book_condition`) VALUES (?,?,?)",
+    [req.body.title, req.body.author, req.body.book_condition],
+    function(err, result){
+        if(err){
+            console.log(err)
+            next(err)
+            return;
+        } else {
+        console.log(result)
+        console.log(req.body)
+        res.send(true);
+        }
+    });
 });
 
 app.post("/myshelf", function (req, res) {

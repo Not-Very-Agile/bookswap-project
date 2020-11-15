@@ -3,10 +3,14 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-body{
+html{
     background-image: linear-gradient(#00000099, #00000099), url(img/pexels-element-digital-1370295.jpg);
-    background-size: 100vw;
+    background-size: cover;
     background-attachment: fixed;
+}
+
+section{
+    padding: 5% 0;
 }
 
 a{
@@ -22,6 +26,14 @@ form input{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.no-results{
+    text-align: center;
+}
+
+h3{
+    margin: 0;
 }
 
 .book-row{

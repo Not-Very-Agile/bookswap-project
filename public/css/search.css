@@ -14,6 +14,10 @@ a{
     color: black;
 }
 
+form input{
+    color: black;
+}
+
 .book-covers{
     display: flex;
     flex-direction: column;

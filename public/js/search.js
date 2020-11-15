@@ -61,8 +61,13 @@ function getBooksInfo(searchParam){
         console.log(searchResponse)
         searchResponse = parseData(searchResponse);
         console.log(searchResponse);
-
-        bookRows(searchResponse);
+        
+        if (searchResponse.length > 0){
+            bookRows(searchResponse);
+        }else{
+            noResults();
+        }
+        
     })
     request.send(null);
 }
@@ -86,6 +91,25 @@ function bookRows(searchResults){
             document.querySelector('.book-covers').appendChild(newRow);
         }
     }
+}
+
+function noResults(){
+    // create a header with a message
+    let noResultHeader = document.createElement('h2');
+    noResultHeader.className = "no-results";
+    noResultHeader.textContent = "Your search returned no results";
+    document.querySelector('.book-covers').appendChild(noResultHeader);
+
+    // create subtext for header
+    let noResultSubHeader = document.createElement('h3');
+    noResultSubHeader.className = "no-results";
+    noResultSubHeader.textContent = "Check your spelling or provide a less specific search parameter";
+    document.querySelector('.book-covers').appendChild(noResultSubHeader);
+
+    let serverError = document.createElement('h3');
+    serverError.className = "no-results";
+    serverError.textContent = "If you think there should be results, please retry your query as it could be a server error";
+    document.querySelector('.book-covers').appendChild(serverError);
 }
 
 function parseData(searchResults){

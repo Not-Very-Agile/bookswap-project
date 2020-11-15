@@ -14,7 +14,8 @@ function addCover(book){
 
     // image for the book 
     let cover = document.createElement("img");
-    cover.alt = `${book.title} cover`
+    
+    cover.alt = ' ';
     cover.className = "list-cover";
 
     // get cover image if available using oclc or isbn number
@@ -43,6 +44,7 @@ function addCover(book){
 
     return bookLink;
 }
+
 
 function getBooksInfo(searchParam){
     let searchResponse;

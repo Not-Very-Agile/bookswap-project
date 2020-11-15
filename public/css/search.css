@@ -3,7 +3,8 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-html{
+
+body{
     background-image: linear-gradient(#00000099, #00000099), url(img/pexels-element-digital-1370295.jpg);
     background-size: cover;
     background-attachment: fixed;
@@ -16,6 +17,22 @@ section{
 a{
     text-decoration: none;
     color: black;
+}
+
+.search-books,
+h1{
+    margin: 0;
+    width: 100vw;
+    background-color: #fff;
+    padding-left: 1%;
+}
+
+h1{
+    padding-top: 1%;
+}
+
+.search-books{
+    padding-bottom: 1%;
 }
 
 form input{

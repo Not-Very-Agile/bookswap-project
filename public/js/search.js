@@ -9,26 +9,32 @@
 // covers.appendChild(firstCover);
 
 function addCover(book){
-    let coverHolder = document.createElement("p");
-    coverHolder.innerText = `${book.title} by:${book.author}`
-    // let coverHolder = document.createElement("div");
-    // coverHolder.className = "cover-holder";
-    // let cover = document.createElement("img");
-    // cover.onerror = "this.onload = null; this.src = ;"
-    // if(book.oclc)
-    //     cover.src = `http://covers.openlibrary.org/b/oclc/${book.oclc}-M.jpg`; 
+    // creat a link and container
+    let bookLink = document.createElement('a');
+    bookLink.className = 'book-link';
+    bookLink.href = `addbook.html?title=${book.title}&author=${book.author}`;
 
-    // else if (book.isbn)
-    //     cover.src = `http://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`; 
+    // book info container within the link
+    let coverHolder = document.createElement("div");
+    coverHolder.className = "cover-holder";
+    let cover = document.createElement("img");
 
-    // else
-    //     cover.src = 'img/no_cover_book.jpg';
+    // get cover if available using oclc or isbn number
+    if(book.oclc)
+        cover.src = `http://covers.openlibrary.org/b/oclc/${book.oclc}-M.jpg?default=false`; 
 
-    // cover.alt = `${book.title} ${book.author}`
-    // cover.className = "list-cover";
+    else if (book.isbn)
+        cover.src = `http://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg?default=false`; 
 
-    // coverHolder.appendChild(cover)
-    return coverHolder;
+    else
+        cover.src = 'img/no_cover_book.jpg';
+
+    cover.alt = `${book.title} by: ${book.author}`
+    cover.className = "list-cover";
+
+    coverHolder.appendChild(cover)
+    bookLink.appendChild(coverHolder);
+    return bookLink;
 }
 
 function getBooksInfo(searchParam){
@@ -46,20 +52,39 @@ function getBooksInfo(searchParam){
         searchResponse = parseData(searchResponse);
         console.log(searchResponse);
 
-        searchResponse.forEach(e => {
-            document.querySelector(".book-covers").appendChild(addCover(e))
-        });
+        bookRows(searchResponse);
+        // searchResponse.forEach(e => {
+        //     document.querySelector(".book-covers").appendChild(addCover(e))
+        // });
 
     })
     request.send(null);
 }
 
-function coverList(searchParam){
-    let searchResults = getBooksInfo(searchParam);
-
-    console.log(searchResults);
-
-    // showSearchResults(searchResults);
+function bookRows(searchResults){
+    let numResults = searchResults.length
+    let k = 0;
+    // determine how many rows
+    let numRows = Math.ceil(numResults / 8);
+    // for each row
+    for (let i = 0; i < numRows; i++){
+        let newRow = document.createElement('div');
+        newRow.className = "book-row";
+        for (let j = 0; j < 8; j++){
+            if (k < numResults){
+                newRow.appendChild(addCover(searchResults[k]));
+                k++
+            }else{
+                break;
+            }
+            document.querySelector('.book-covers').appendChild(newRow);
+        }
+    }
+    // create div
+    // name class
+    // for every 8 books
+        // add a cover to the row
+    // append row as child
 }
 
 function parseData(searchResults){
@@ -70,7 +95,7 @@ function parseData(searchResults){
         bookResults[i] = {};
         let book = searchResults[i];
         bookResults[i].title = title = (book["title"]) ? book["title"] : "";
-        bookResults[i].author = author = book["author_name"] ? book["author_name"][0] : "Author Not Listed";
+        bookResults[i].author = author = book["author_name"] ? book["author_name"][0] : "";
         bookResults[i].isbn = isbn = book["isbn"] ? book["isbn"][0] : null;
         bookResults[i].oclc = oclc = book["oclc"] ? book["oclc"][0]  : null;        
     }

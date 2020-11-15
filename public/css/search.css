@@ -54,7 +54,15 @@ form input{
 
 .list-cover{
     color: #000;
+}
 
+.list-cover:before{
+    content: ' ';
+    display: block;
+    height: 250px;
+    width: 150px;
+    background-image: url('img/no_cover_book.jpg');
+    background-size: cover;
 }
 
 .book-info{

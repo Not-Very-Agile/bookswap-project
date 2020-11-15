@@ -1,3 +1,7 @@
+window.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('search-param').value = '';
+})
+
 function addCover(book){
     // creat a link and container
     let bookLink = document.createElement('a');

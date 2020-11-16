@@ -4,35 +4,57 @@ body {
     font-family: 'Quicksand', sans-serif;
   }
 
-  table {
-      border: 5px solid #ebbd34;
-      width: 100%;
+  h1{
+    padding-top: 15px;
   }
 
-  th {
-      font-weight: bold;
-      padding: 2px;
+  h4 {
+    padding-bottom: 25px;
   }
-  
 
-  .field {
-    margin-bottom: .75em;
-  }
+#bookshelf-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  background-color: #e0de65;
+}
+
+#bookshelf-table td, #bookshelf-table th {
+  border: 1px solid#ddd;
+  padding: 8px;
+}
+
+#bookshelf-table tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+#bookshelf-table tr:nth-child(odd){
+  background-color: #e3e3e3;
+}
+
+#bookshelf-table tr:hover {
+  background-color: #c4c8cf;
+}
+
+#bookshelf-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #52855b;
+  color: white;
+}
+
+.footer {
+  text-decoration: none;
+  color: white;
+}
   
-  label { 
-    display: block; 
-    margin-bottom: .10em;
-  }
-  
-  .footer {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .photo-credit{
-    text-align: center;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    padding: 1%;
-  }
+.photo-credit{
+  text-align: center;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 1%;
+}

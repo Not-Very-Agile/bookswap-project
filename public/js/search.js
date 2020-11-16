@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 })
 
 function addCover(book){
-    // creat a link and container
+    // create a link and container
     let bookLink = document.createElement('a');
     bookLink.className = 'book-link';
     bookLink.href = `addbook.html?title=${book.title}&author=${book.author}`;

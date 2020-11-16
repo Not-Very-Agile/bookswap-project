@@ -1,6 +1,6 @@
 // Project: BookSwap - CS 361 Software Engineering I
 // Team Name: Not Very Agile
-// Contributors: Rohit Chaudhary, Brian Forsyth, Dan Allem, Emily McMullan, Will Coiner
+// Contributors: Rohit Chaudhary, Brian Forsyth, Dan Allen, Emily McMullan, Will Coiner
 // Description: Node.js server utilizing the Handlebars templating engine in order to handle front end requests from the BookSwap client and also send requests to database and external API
 
 var credentials = require('./credentials.json')
@@ -59,7 +59,7 @@ app.get("/login", function (req, res) {
 });
 
 app.get("/logfail", function (req, res) {
-    // already existing user login page
+    // passwords did not match
     var context = {};
     res.status(200);
     console.log(context);
@@ -67,7 +67,7 @@ app.get("/logfail", function (req, res) {
 });
 
 app.get("/editprofile", function (req, res) {
-    // already existing user login page
+    // edit user account information 
     var context = {};
     res.status(200);
     console.log(context);
@@ -82,30 +82,35 @@ app.get("/account", function (req, res) {
 });
 
 app.get("/faq", function (req, res) {
-    // view user account information
+    // view FAQ page
     var userInfo = req.body
     res.status(200);
     res.sendFile(path.join(__dirname + '/public/faq.html'))
 });
 
 app.get("/myshelf", function (req, res) {
-    // home page
+    // user's books they have added to swap
     var context = {};
     res.status(200);
     console.log(context);
     res.sendFile(path.join(__dirname + '/public/myshelf.html'));
 });
 
-app.get("/bookshelf", function (req, res) {
-    // home page
+app.get("/bookshelf", function(req, res ,next){
+    // displays all available books 
     var context = {};
-    res.status(200);
-    console.log(context);
-    res.sendFile(path.join(__dirname + '/public/bookshelf.html'));
+    mysql.pool.query("SELECT * FROM Books", function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context= rows;
+        res.send(context);
+    });
 });
 
 app.get("/search", function (req, res) {
-    // home page
+    // search for a specific book
     var context = {};
     res.status(200);
     console.log(context);
@@ -113,7 +118,7 @@ app.get("/search", function (req, res) {
 });
 
 app.get("/addbook", function (req, res) {
-    // home page
+    // view page to add book to database
     var context = {};
     res.status(200);
     console.log(context);

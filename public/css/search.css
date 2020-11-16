@@ -100,3 +100,14 @@ h3{
     text-align: center;
     margin: 1%;
 }
+
+footer{
+    text-align: right;
+    padding: 2%;
+}
+
+.photo-credit{
+    color: #fff;
+    text-align: center;
+    position: relative;
+}

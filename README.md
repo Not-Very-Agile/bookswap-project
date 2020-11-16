@@ -7,8 +7,20 @@ npm install -g npm <br />
 npm install express <br />
 npm install request <br />
 
-# Run application
-node app.js
+# Connect to MySQL
+
+Install MySQL Community Server https://dev.mysql.com/downloads/mysql/ <br />
+Connect with terminal: mysql -u root -p <br />
+Create db: CREATE DATABASE bookswap; <br />
+Select DB: USE bookswap; <br />
+npm install mysql <br />
+npm install dotenv  <br />
+Create a ‘.env’ file in the root of the project folder and add the following: <br />
+
+  HOST="localhost" <br />
+  USERNAME="root" <br />
+  PASS="<passwordyoucreatedoninstall>" <br />
+  DATABASE="bookswap" <br />
 
 # Navigate App
 Navigate to http://localhost:7600/ <br />

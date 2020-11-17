@@ -96,7 +96,16 @@ app.get("/myshelf", function (req, res) {
     res.sendFile(path.join(__dirname + '/public/myshelf.html'));
 });
 
-app.get("/bookshelf", function(req, res ,next){
+app.get("/bookshelf", function (req, res) {
+    // user's books they have added to swap
+    var context = {};
+    res.status(200);
+    console.log(context);
+    res.sendFile(path.join(__dirname + '/public/bookshelf.html'));
+});
+
+
+app.get("/bookshelfpull", function(req, res ,next){
     // displays all available books 
     var context = {};
     mysql.pool.query("SELECT * FROM Books", function(err, rows, fields){

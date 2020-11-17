@@ -1,5 +1,5 @@
 $.ajax({
-    url: 'http://localhost:7600/bookshelf',
+    url: 'http://localhost:7600/bookshelfpull',
     type: "GET",
     dataType: "JSON",
 

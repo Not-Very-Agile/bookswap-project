@@ -27,6 +27,11 @@ h1{
     padding-left: 1%;
 }
 
+.search-books h1{ 
+    color: black;
+    padding: 0;
+}
+
 h1{
     padding-top: 1%;
 }

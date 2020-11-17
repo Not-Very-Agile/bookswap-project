@@ -84,6 +84,7 @@ function displayData(bookQueryResponse){
     document.querySelector(".book-covers").innerHTML = "";
 
     if(bookQueryResponse.length > 0){
+        console.log(bookQueryResponse);
         bookRows(bookQueryResponse);
     }else{
         noResults();
@@ -97,6 +98,7 @@ function getBooksInfo(searchParam){
     request.open("GET", query, true);
     request.addEventListener('load', function(){
         bookQueryResponse = cleanData(request.responseText);
+        console.log(bookQueryResponse);
         displayData(bookQueryResponse);
     })
     request.send(null);

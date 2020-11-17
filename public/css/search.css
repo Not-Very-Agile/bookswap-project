@@ -85,7 +85,7 @@ h3{
     color: #000;
 }
 
-.list-cover:before{
+.list-cover{
     content: ' ';
     display: block;
     height: 250px;

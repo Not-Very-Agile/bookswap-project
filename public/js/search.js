@@ -45,29 +45,31 @@ function addCover(book){
     return bookLink;
 }
 
+function cleanData(rawData){
+    let bookFiles = JSON.parse(rawData);
+    bookFiles = bookFiles.docs;
+    parseData(bookFiles);
+    return bookFiles;
+}
+
+function displayData(bookQueryResponse){
+    document.querySelector(".book-covers").innerHTML = "";
+
+    if(bookQueryResponse.length > 0){
+        bookRows(bookQueryResponse);
+    }else{
+        noResults();
+    }
+}
 
 function getBooksInfo(searchParam){
-    let searchResponse;
     let request = new XMLHttpRequest();
     let query = `http://openlibrary.org/search.json?q=${searchParam}`;
 
     request.open("GET", query, true);
     request.addEventListener('load', function(){
-        // clear the page on succesful new search
-        document.querySelector(".book-covers").innerHTML = "";
-
-        searchResponse = JSON.parse(request.responseText);
-        searchResponse = searchResponse.docs;
-        console.log(searchResponse)
-        searchResponse = parseData(searchResponse);
-        console.log(searchResponse);
-        
-        if (searchResponse.length > 0){
-            bookRows(searchResponse);
-        }else{
-            noResults();
-        }
-        
+        bookQueryResponse = cleanData(request.responseText);
+        displayData(bookQueryResponse);
     })
     request.send(null);
 }

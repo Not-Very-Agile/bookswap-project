@@ -2,72 +2,104 @@ window.addEventListener('DOMContentLoaded', ()=>{
     document.getElementById('search-param').value = '';
 })
 
-function addCover(book){
+function makeCoverHolder(){
+    let coverHolder = document.createElement("div");
+    coverHolder.className = "cover-holder";
+
+    return coverHolder;
+}
+
+function makeCoverObject(oclc, isbn){
+    const defaultImg = makeDefaultImg();
+
+    // image for the book 
+    let cover = document.createElement("object");
+    cover.alt = ' ';
+    cover.className = "list-cover";
+
+    // get cover image if available using oclc or isbn number
+    if(oclc)
+        cover.data = `http://covers.openlibrary.org/b/oclc/${oclc}-M.jpg?default=false`; 
+
+    else if (isbn)
+        cover.data = `http://covers.openlibrary.org/b/isbn/${isbn}-M.jpg?default=false`; 
+
+    else
+        cover.data = 'img/no_cover_book.jpg';
+    
+    cover.appendChild(defaultImg);
+    return cover;
+}
+
+function makeDefaultImg(){
+    let defaultSrc = document.createElement('img');
+    defaultSrc.src = 'img/no_cover_book.jpg';
+    defaultSrc.className = 'list-cover';
+    
+    return defaultSrc;
+}
+
+function makeBookLink(book){
     // create a link and container
     let bookLink = document.createElement('a');
     bookLink.className = 'book-link';
     bookLink.href = `addbook.html?title=${book.title}&author=${book.author}`;
 
+    return bookLink;
+}
+
+function makeBookInfo(bookParam){
+    bookInfo = document.createElement('span');
+    bookInfo.className = 'book-info';
+    bookInfo.textContent = `${bookParam}`;
+
+    return bookInfo;
+}
+
+function addCover(book){
+    let bookLink = makeBookLink(book);
+
     // book info container within the link
-    let coverHolder = document.createElement("div");
-    coverHolder.className = "cover-holder";
+    let coverHolder = makeCoverHolder();
 
-    // image for the book 
-    let cover = document.createElement("img");
-    
-    cover.alt = ' ';
-    cover.className = "list-cover";
-
-    // get cover image if available using oclc or isbn number
-    if(book.oclc)
-        cover.src = `http://covers.openlibrary.org/b/oclc/${book.oclc}-M.jpg?default=false`; 
-
-    else if (book.isbn)
-        cover.src = `http://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg?default=false`; 
-
-    else
-        cover.src = 'img/no_cover_book.jpg';
+    let cover = makeCoverObject(book.oclc, book.isbn); 
 
     coverHolder.appendChild(cover);
     bookLink.appendChild(coverHolder);
 
     // Title and author text accompanying the image
-    bookTitle = document.createElement('span');
-    bookTitle.className = 'book-info';
-    bookTitle.textContent = `${book.title}`;
-    bookLink.appendChild(bookTitle);
-
-    bookAuthor = document.createElement('span');
-    bookAuthor.className = 'book-info';
-    bookAuthor.textContent = `${book.author}`;
-    bookLink.appendChild(bookAuthor);
+    bookLink.appendChild(makeBookInfo(book.title));
+    bookLink.appendChild(makeBookInfo(book.author));
 
     return bookLink;
 }
 
+function cleanData(rawData){
+    let bookFiles = JSON.parse(rawData);
+    bookFiles = parseData(bookFiles.docs);
+    return bookFiles;
+}
+
+function displayData(bookQueryResponse){
+    document.querySelector(".book-covers").innerHTML = "";
+
+    if(bookQueryResponse.length > 0){
+        console.log(bookQueryResponse);
+        bookRows(bookQueryResponse);
+    }else{
+        noResults();
+    }
+}
 
 function getBooksInfo(searchParam){
-    let searchResponse;
     let request = new XMLHttpRequest();
     let query = `http://openlibrary.org/search.json?q=${searchParam}`;
 
     request.open("GET", query, true);
     request.addEventListener('load', function(){
-        // clear the page on succesful new search
-        document.querySelector(".book-covers").innerHTML = "";
-
-        searchResponse = JSON.parse(request.responseText);
-        searchResponse = searchResponse.docs;
-        console.log(searchResponse)
-        searchResponse = parseData(searchResponse);
-        console.log(searchResponse);
-        
-        if (searchResponse.length > 0){
-            bookRows(searchResponse);
-        }else{
-            noResults();
-        }
-        
+        bookQueryResponse = cleanData(request.responseText);
+        console.log(bookQueryResponse);
+        displayData(bookQueryResponse);
     })
     request.send(null);
 }
@@ -93,23 +125,33 @@ function bookRows(searchResults){
     }
 }
 
-function noResults(){
-    // create a header with a message
+function makeNoResultHeader(){
     let noResultHeader = document.createElement('h2');
     noResultHeader.className = "no-results";
-    noResultHeader.textContent = "Your search returned no results";
-    document.querySelector('.book-covers').appendChild(noResultHeader);
+    noResultHeader.textContent = "Your search returned no results"; 
 
-    // create subtext for header
-    let noResultSubHeader = document.createElement('h3');
+    return noResultHeader;
+}
+
+function makeNoResultSubHeader(message){
+    let noResultSubHeader = document.createElement('h3');    
     noResultSubHeader.className = "no-results";
-    noResultSubHeader.textContent = "Check your spelling or provide a less specific search parameter";
-    document.querySelector('.book-covers').appendChild(noResultSubHeader);
+    noResultSubHeader.textContent = message;
 
-    let serverError = document.createElement('h3');
-    serverError.className = "no-results";
-    serverError.textContent = "If you think there should be results, please retry your query as it could be a server error";
-    document.querySelector('.book-covers').appendChild(serverError);
+    return noResultSubHeader;
+}
+
+function noResults(){
+    // create a header with a message
+
+    document.querySelector('.book-covers').appendChild(makeNoResultHeader());
+
+    document.querySelector('.book-covers').appendChild(
+        makeNoResultSubHeader("Check your spelling or provide a less specific search parameter")
+    );
+    document.querySelector('.book-covers').appendChild(
+        makeNoResultSubHeader("If you think there should be results, please retry your query as it could be a server error")
+    );
 }
 
 function parseData(searchResults){

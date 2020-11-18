@@ -21,4 +21,5 @@ function createBookshelfRows(rowData) {
         row.append($("<td>" + rowData.author + "</td>"));
         row.append($("<td>" + rowData.book_condition + "</td>"));
         row.append($("<button>" + "Select" + "</button>"));
-    }
+        row.append($("<td>" + "<button>" + "Update" + "</button>" + "<button>" + "Delete" + "</button>" + "</td>"));
+}

@@ -208,14 +208,6 @@ app.post("/editprofile", function (req, res) {
     credentials.accounts[index]['address'] = userInfo['address'];
 });
 
-app.get("/about", function (req, res) {
-    // about page
-    var context = {};
-    res.status(200);
-    console.log(context);
-    res.sendFile(path.join(__dirname + '/public/about.html'));
-});
-
 app.get(function (req, res) {
     res.status(404);
     res.render('404');

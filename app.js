@@ -22,8 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// called by myshelf route to check against credentials
-function validateCreds(creds) {
+function validateUserPassword(creds) {
     for (let i = 0; i < credentials.accounts.length; i++) {
         if (creds['user'] == credentials.accounts[i]["user"]) {
             if (creds['pass'] == credentials.accounts[i]["pass"]) {

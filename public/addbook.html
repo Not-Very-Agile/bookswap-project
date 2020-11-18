@@ -55,10 +55,20 @@
                         <input id="author" type="text" placeholder="Enter Author" name="author" required>
                       </div>
                       
-                      <div class="field">
+                      <!-- <div class="field">
                         <label for="book_condition"><b>Book Condition</b></label>
                         <input id="book_condition" type="text" placeholder="Enter Book Condition" name="book_condition" required>
-                      </div>
+                      </div> -->
+                      
+                      <p id="book-cond-select">Please Select Book Condition:</p>
+                      <input type="radio" id="likenew" name="book_condition" value="Like New">
+                      <label for="likenew">Like New</label><br>
+
+                      <input type="radio" id="good" name="book_condition" value="Good">
+                      <label for="good">Good</label><br>  
+
+                      <input type="radio" id="worn" name="book_condition" value="Worn">
+                      <label for="worn">Worn</label><br><br>
                       
                       <div class="clearfix">
                         <button type="button" id="addbtn">Add</button>

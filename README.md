@@ -6,6 +6,7 @@ Term-long project for CS 361 - Software Engineering I
 npm install -g npm <br />
 npm install express <br />
 npm install request <br />
+npm install jquery <br />
 
 # Connect to MySQL
 

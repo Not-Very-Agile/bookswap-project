@@ -104,7 +104,6 @@ app.get("/bookshelf", function (req, res) {
     res.sendFile(path.join(__dirname + '/public/bookshelf.html'));
 });
 
-
 app.get("/bookshelfpull", function(req, res ,next){
     // displays all available books 
     var context = {};

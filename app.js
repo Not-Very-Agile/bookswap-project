@@ -22,17 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-function validateUserPassword(creds) {
-    for (let i = 0; i < credentials.accounts.length; i++) {
-        if (creds['user'] == credentials.accounts[i]["user"]) {
-            if (creds['pass'] == credentials.accounts[i]["pass"]) {
-                return true;
-            }
-            return false;
-        }
-    }
-    return false;
-}
 
 app.get("/", function (req, res) {
     // home page

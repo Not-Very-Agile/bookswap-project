@@ -213,18 +213,34 @@ app.post("/myshelf", function (req, res) {
       });
 });
 
+// app.post("/editprofile", function (req, res) {
+//     var userInfo = req.body;
+//     var index = null
+//     for (var i = 0; i < credentials.accounts.length; i++) {
+//         if (credentials.accounts[i]['user'] === userInfo['user'])
+//             index = i;
+//     }
+//     credentials.accounts[index]['first_name'] = userInfo['first_name'];
+//     credentials.accounts[index]['last_name'] = userInfo['last_name'];
+//     credentials.accounts[index]['email'] = userInfo['email'];
+//     credentials.accounts[index]['address'] = userInfo['address'];
+// });
+
 app.post("/editprofile", function (req, res) {
+    var context = {}
     var userInfo = req.body;
-    var index = null
-    for (var i = 0; i < credentials.accounts.length; i++) {
-        if (credentials.accounts[i]['user'] === userInfo['user'])
-            index = i;
-    }
-    credentials.accounts[index]['first_name'] = userInfo['first_name'];
-    credentials.accounts[index]['last_name'] = userInfo['last_name'];
-    credentials.accounts[index]['email'] = userInfo['email'];
-    credentials.accounts[index]['address'] = userInfo['address'];
-});
+    mysql.pool.query("UPDATE Users SET first_name=?, last_name=?, email=?, address=? WHERE username=?",
+        [userInfo.first_name, userInfo.last_name, userInfo.email, userInfo.address, userInfo.user],
+        function(err, result){
+        if(err){
+          console.log(err)
+        }
+        console.log(result)
+        context.results = "Updated " + result.affectedRows + " rows.";
+        console.log(context.results)
+        }
+    );
+})
 
 app.get(function (req, res) {
     res.status(404);

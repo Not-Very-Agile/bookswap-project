@@ -17,8 +17,11 @@ function createBookshelfTable(data) {
 function createBookshelfRows(rowData) {
     var row = $("<tr />")
     $("#bookshelf-table").append(row);
+        row.append($("<td hidden>" + rowData.bookid + "</td>"));
         row.append($("<td>" + rowData.title + "</td>"));
         row.append($("<td>" + rowData.author + "</td>"));
         row.append($("<td>" + rowData.book_condition + "</td>"));
-        row.append($("<button>" + "Select" + "</button>"));
-    }
+        row.append($("<td>" + "<button>" + "Select" + "</button>" + "</td>"));
+        row.append($("<td>" + "<button class='update'>" + "Update" + "</button>" + "</td>"));
+}
+

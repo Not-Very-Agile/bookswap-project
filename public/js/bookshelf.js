@@ -21,5 +21,10 @@ function createBookshelfRows(rowData) {
         row.append($("<td>" + rowData.author + "</td>"));
         row.append($("<td>" + rowData.book_condition + "</td>"));
         row.append($("<button>" + "Select" + "</button>"));
-        row.append($("<td>" + "<button>" + "Update" + "</button>" + "<button>" + "Delete" + "</button>" + "</td>"));
+
+        // create update and delete buttons, assign events
+        var updateButton = ($("<button class='update'>" + "Update" + "</button>"));
+        var deleteButton = ($("<button class='delete'>" + "Delete" + "</button>"));
+        row.append($("<td>" + updateButton + deleteButton +"</td>"));
+
 }

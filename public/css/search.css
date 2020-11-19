@@ -1,38 +1,13 @@
-*{
-    color: #fff;
-    font-family: 'Quicksand', sans-serif;
-}
-
-
-body{
-    background-image: linear-gradient(#00000099, #00000099), url(img/pexels-element-digital-1370295.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-}
-
 section{
     padding: 5% 0;
 }
 
-a{
-    text-decoration: none;
-    color: black;
-}
-
-.search-books,
-h1{
-    margin: 0;
-    width: 100vw;
-    background-color: #fff;
-    padding-left: 1%;
-}
-
-.search-books h1{ 
-    color: black;
-    padding: 0;
+.search-books{ 
+    padding: 5%;
 }
 
 h1{
+
     padding-top: 1%;
 }
 
@@ -40,7 +15,7 @@ h1{
     padding-bottom: 1%;
 }
 
-form input{
+#search-param{
     color: black;
 }
 
@@ -104,15 +79,4 @@ h3{
     display: block;
     text-align: center;
     margin: 1%;
-}
-
-footer{
-    text-align: right;
-    padding: 2%;
-}
-
-.photo-credit{
-    color: #fff;
-    text-align: center;
-    position: relative;
 }

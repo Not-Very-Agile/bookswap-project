@@ -1,16 +1,3 @@
-body {
-    background-image: linear-gradient(#00000099, #00000099), url(img/pexels-element-digital-1370295.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: 'Quicksand', sans-serif;
-  }
-
-.title {
-    text-align: center;
-    color: white;
-    font-size: x-large;
-}
-  
 .shelf-container {
     text-align: center;
     margin: auto;
@@ -19,13 +6,4 @@ body {
     color: white;
     background-color: grey;
     max-width: 60%;
-}
-
-a:link {
-    text-decoration: none;
-}
-
-.footer {
-    text-decoration: none;
-    color: white;
 }

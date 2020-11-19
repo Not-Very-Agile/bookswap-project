@@ -1,18 +1,10 @@
-*{
-    color: #fff;
-}
-body {
-    background-image: linear-gradient(#00000099, #00000099), url(img/pexels-element-digital-1370295.jpg);
-    background-size: cover;
-    font-family: 'Quicksand', sans-serif;
-  }
-
 .title {
     text-align: center;
     font-size: x-large;
 }
   
 .home-container {
+    color: #fff;
     text-align: center;
     margin: auto;
     padding-top: 1em;
@@ -20,19 +12,3 @@ body {
     background-color: grey;
     max-width: 60%;
 }
-
-a:link {
-    text-decoration: none;
-}
-
-.footer {
-    text-decoration: none;
-}
-
-.photo-credit{
-    text-align: center;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    padding: 1%;
-  }

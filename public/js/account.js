@@ -33,7 +33,7 @@ function createAccountTable(data) {
             document.getElementById("myEmail").innerHTML = "Email: " + data[i].email;
             document.getElementById("myAddress").innerHTML = "Address: " + data[i].address
         } else {
-            return false;
+            continue;
         }
     }
 }

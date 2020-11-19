@@ -75,9 +75,19 @@ app.get("/editprofile", function (req, res) {
 
 app.get("/account", function (req, res) {
     // view user account information
-    var userInfo = req.body
     res.status(200);
     res.sendFile(path.join(__dirname + '/public/account.html'))
+});
+
+app.get("/accountpull", function (req, res, next) {
+    // view user account information
+    mysql.pool.query("SELECT * FROM Users;", function(err, rows, fields){
+        if (err){
+            next(err);
+            return;
+        }
+    res.send(rows)
+    });
 });
 
 app.get("/faq", function (req, res) {

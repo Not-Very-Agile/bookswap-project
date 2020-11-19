@@ -1,9 +1,41 @@
-credentials = {"accounts":[{"user":"test123","pass":"password","first_name":"","last_name":"M","email":"","address":""},{"user":"test1234","pass":"1","first_name":"sdfn","last_name":"jn","email":"kjb","address":"kjb"},{"user":"","pass":"","first_name":"","last_name":"","email":"","address":""},{"user":"sdfhsdfi","pass":"1","first_name":"kn","last_name":"kb","email":"jh","address":"bh"}]}
+let currUser = getCurrentUser();
+
+function getCurrentUser(){
+    let currentUser = localStorage.getItem('user');
+    console.log(currentUser);
+    return currentUser;
+}
+
+function createAccountObject() {
+    var userName = document.getElementById("userName").value;
+    var accountName = document.getElementById("myName").value;
+    var userEmail = document.getElementById("myEmail").value;
+    var userAddress = document.getElementById("myAddress").value;
+    var object = {username: userName, first_name: accountName, email: userEmail, address: userAddress}
+    return object;
+};
+
+$.ajax({
+    url: 'http://localhost:7600/accountpull',
+    type: "GET",
+    dataType: "JSON",
+
+    success: function(data) {
+        createAccountTable(data);
+    }
+});
+
+function createAccountTable(data) {
+    document.getElementById("userName").innerHTML = "Account Name: " + currUser
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].username == currUser) {
+            document.getElementById("myName").innerHTML = "Name: " + data[i].first_name + " " + data[i].last_name
+            document.getElementById("myEmail").innerHTML = "Email: " + data[i].email;
+            document.getElementById("myAddress").innerHTML = "Address: " + data[i].address
+        } else {
+            return false;
+        }
+    }
+}
 
 
-$.get("/account", function(data, status){
-    document.getElementById("userName").innerHTML = "User Name: " + credentials.accounts[1].user
-    document.getElementById("myName").innerHTML = "Name: " + credentials.accounts[1].first_name + " " + credentials.accounts[1].last_name
-    document.getElementById("myEmail").innerHTML = "Email: " + credentials.accounts[1].email
-    document.getElementById("myAddress").innerHTML = "Address: " + credentials.accounts[1].address
- }); 

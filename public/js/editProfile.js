@@ -17,7 +17,7 @@ function createUpdateObject(){
       var lastName = document.getElementById("newLastName").value
       var email = document.getElementById("newEmail").value
       var address = document.getElementById("newAddress").value
-      var username = document.getElementById("username").value
+      var username = localStorage.getItem('user');
       var object = {user: username, first_name: firstName, last_name: lastName, email: email, address: address}
       return object
 };

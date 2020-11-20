@@ -100,19 +100,22 @@ function addUpdateListeners(buttonList) {
                         payload['condition'] = radio_selects[i].value;
                     }
                 };
-
-                let url = 'http://localhost:7600/bookupdate';
-                let req = new XMLHttpRequest();
-                req.open("POST", url, true);
-                req.setRequestHeader("Content-Type", "application/json");
-                payload = JSON.stringify(payload);
-                console.log(payload);
-                req.send(payload);
-                window.location.reload();
+                submitData(payload);
             });
         });
     }
 }  
+
+function submitData(payload) {
+    let url = 'http://localhost:7600/bookupdate';
+    let req = new XMLHttpRequest();
+    req.open("POST", url, true);
+    req.setRequestHeader("Content-Type", "application/json");
+    payload = JSON.stringify(payload);
+    console.log(payload);
+    req.send(payload);
+    window.location.reload();    
+}
 
 window.addEventListener('load', function() {
     let buttons = document.getElementsByClassName('update');

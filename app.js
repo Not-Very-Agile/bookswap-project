@@ -3,10 +3,9 @@
 // Contributors: Rohit Chaudhary, Brian Forsyth, Dan Allen, Emily McMullan, Will Coiner
 // Description: Node.js server utilizing the Handlebars templating engine in order to handle front end requests from the BookSwap client and also send requests to database and external API
 
-var credentials = require('./credentials.json')
+
 var express = require('express');
 var request = require('request');
-const fs = require("fs");
 var mysql = require('./dbcon.js');
 require('dotenv').config();
 var app = express();

@@ -179,8 +179,8 @@ app.post("/signup", function (req, res) {
 
 app.post("/addbook", function (req, res) {
     // adds user book to bookshelf
-    mysql.pool.query("INSERT INTO Books (`title`, `author`, `book_condition`) VALUES (?,?,?)",
-    [req.body.title, req.body.author, req.body.book_condition],
+    mysql.pool.query("INSERT INTO Books (`title`, `author`, `book_condition`, `book_owner`, `point_value`) VALUES (?,?,?,?,?)",
+    [req.body.title, req.body.author, req.body.book_condition, req.body.book_owner, req.body.point_value],
     function(err, result){
         if(err){
             console.log(err)
@@ -267,8 +267,9 @@ app.get('/reset-books', function (req, res, next) {
             "title VARCHAR(255) NOT NULL," +
             "author VARCHAR(255)," +
             "book_condition VARCHAR(255)," +
-            "book_owner INT," +
-            "FOREIGN KEY (book_owner) REFERENCES Users(userid))";
+            "book_owner VARCHAR(255)," +
+            "point_value INT)";
+            //"FOREIGN KEY (book_owner) REFERENCES Users(userid))";
         mysql.pool.query(createString, function (err) {
             context.results = "Books Table reset";
             console.log(err);

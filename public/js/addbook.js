@@ -23,3 +23,28 @@ document.getElementById("addbtn").addEventListener('click', function(event){
     })
     window.location.href = "/myshelf";
   });
+
+  function querySt(ji) {
+
+    hu = window.location.search.substring(1);
+    gy = hu.split("&");
+
+    for (i=0;i<gy.length;i++) {
+        ft = gy[i].split("=");
+        if (ft[0] == ji) {
+            return ft[1];
+        }
+    }
+}
+   
+var title = querySt("title");
+var author = querySt("author");
+if (title != null) {
+  document.getElementById("title").value = decodeURIComponent(title);
+};
+if (author != null) {
+  document.getElementById("author").value = decodeURIComponent(author);
+};
+
+  
+

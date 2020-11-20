@@ -7,6 +7,8 @@ npm install -g npm <br />
 npm install express <br />
 npm install request <br />
 npm install jquery <br />
+npm install mysql <br />
+npm install dotenv <br />
 
 # Connect to MySQL
 

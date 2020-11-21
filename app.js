@@ -133,6 +133,24 @@ app.post("/bookupdate", function (req, res) {
     });
 });
 
+app.post("/bookdelete", function (req, res) {
+    // update specific book in bookshelf
+    console.log("incoming delete request");
+    console.log(req.body);
+    res.status(200);
+    mysql.pool.query('DELETE FROM books WHERE bookid=?', req.body.bookid, function(err, result){
+        if(err){
+            console.log(err)
+            next(err)
+            return;
+        } else {
+        console.log(result)
+        console.log(req.body)
+        res.send(true);
+        }
+    });
+});
+
 app.get("/search", function (req, res) {
     // search for a specific book
     var context = {};

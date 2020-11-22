@@ -1,13 +1,18 @@
-.maindiv {
+/* .maindiv {
     text-align: center;
     padding: 100px 0;
     font-family: 'Roboto', sans-serif;
     width: 50%;
     margin: 0 auto;
-}
+} */
 
-.btn {
-    margin-bottom: 10px;
+.jumbotron {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    width: 50%;
+    margin: 0 auto;
+    background-color: transparent;
+    color: white;
 }
 
 p {

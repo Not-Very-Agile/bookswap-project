@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to BookSwap</title>
+    <title>Bookswap</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -16,16 +15,19 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">
-      <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
       <i class="fas fa-book-reader"> Bookswap</i>
     </a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav w-100">
-        <li class="nav-item active ml-auto">
-          <a class="nav-link" href="/account">Account</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/login">Log in <span class="sr-only">(current)</span></a>
+        <li class="nav-item dropdown ml-auto">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/login">Sign In</a>
+            <a class="dropdown-item" href="/account">View Profile</a>
+            <a class="dropdown-item" href="/myshelf">My Bookshelf</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/signup">Sign Up</a>
@@ -35,31 +37,30 @@
   </nav>
 
     <br>
-    <div class="maindiv">
+    <!-- <div class="maindiv"> -->
       
-    <div class="title">
+    <!-- <div class="title">
       <h1>Welcome to Bookswap</h1>
       <p>Swap your books for new reads</p>
-    </div>
-    <br>
-      
-    <!-- <div class="home-container">
-        <h4>
-            <a href='/login'>Login</a> if you already have an account or <a href='/signup'>signup</a> for one today.
-        </h4>
+    </div> -->
+
+    <div class="jumbotron" style="background: transparent;">
+      <h1 class="display-4">Welcome to Bookswap!</h1>
+      <p class="lead">Swap your old books for new reads.</p>
+      <hr class="my-4">
+      <p class="lead">
+        <a class="btn btn-dark btn-lg" href="/faq" role="button">How it works</a>
+      </p>
+      <p class="lead">
+        <a class="btn btn-dark btn-lg" href="bookshelf" role="button">View available books</a>
+      </p>
     </div>
 
-    <br>
-
-    <div class="home-container"> -->
-     
+    <!-- <br>
       <a href="/bookshelf" class="btn btn-dark btn-lg" role="button" aria-pressed="true">View available books</a>
-  
       <br>
-
-      <a href="/faq" class="btn btn-dark btn-lg" role="button" aria-pressed="true">How it works</a>
-
-    </div>
+      <a href="/faq" class="btn btn-dark btn-lg" role="button" aria-pressed="true">How it works</a> -->
+    <!-- </div> -->
     
     <footer><a class="footer photo-credit" href="https://www.pexels.com/photo/assorted-books-on-shelf-1370295/">Photo Credit:<br>Element5 Digital</a></footer>
 

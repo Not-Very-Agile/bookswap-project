@@ -6,17 +6,31 @@ label {
     display: block; 
     margin-bottom: .10em;
 }
+
+.title {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 20px;
+  }
   
 .login-form {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(194, 200, 204, 0.45);
+    width: 45%;
+    margin: 0 auto;
+    border-radius: 25px;
     text-align: center;
-    margin: auto;
-    background-color: grey;
-    border-color: grey;
-    max-width: 60%;
-}
+    color: white;
+  }
+    
 
 .loginbtn {
     margin-bottom: 1em;
+    padding: 5px;
+    background-color: #496b4f;
+    color: white;
 }
 
 a:link {

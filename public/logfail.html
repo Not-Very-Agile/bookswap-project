@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/d14569afa6.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+          <i class="fas fa-book-reader"> Bookswap</i>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100">
+            <li class="nav-item dropdown ml-auto">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/login">Sign In</a>
+                <a class="dropdown-item" href="/account">View Profile</a>
+                <a class="dropdown-item" href="/myshelf">My Bookshelf</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Sign Out</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     <h1>UhOh! Login failed. Please <a href='./login.html'>try again</a>.</h1>
 </body>
 </html>

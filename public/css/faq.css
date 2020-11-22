@@ -1,0 +1,46 @@
+
+.title {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 20px;
+  }
+
+.account-table {
+    background-color: rgba(194, 200, 204, 0.45);
+    width: 40%;
+    margin: 0 auto;
+  }
+
+td {
+    font-size: 20px;
+    padding-top: 15px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+  }
+
+.maindiv {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    width: 50%;
+    margin: 0 auto;
+    color: white;
+    border-radius: 25px;
+}
+
+.question-header {
+    background-color: rgba(73, 107, 79, 0.7);
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+}
+
+footer {
+    font-size: 15px;
+  }
+  
+  .photo-credit {
+    color: rgb(236, 233, 226);
+  }
+  

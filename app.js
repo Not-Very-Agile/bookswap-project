@@ -126,8 +126,25 @@ app.post("/bookupdate", function (req, res) {
             next(err)
             return;
         } else {
-        console.log(result)
-        console.log(req.body)
+        console.log(result);
+        console.log(req.body);
+        res.send(true);
+        }
+    });
+});
+
+app.post("/bookdelete", function (req, res) {
+    // delete specific book in bookshelf
+    console.log(req.body);
+    res.status(200);
+    mysql.pool.query('DELETE FROM books WHERE bookid=?', req.body.bookid, function(err, result){
+        if(err){
+            console.log(err)
+            next(err)
+            return;
+        } else {
+        console.log(result);
+        console.log(req.body);
         res.send(true);
         }
     });

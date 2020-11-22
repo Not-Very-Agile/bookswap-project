@@ -1,33 +1,26 @@
-body {
-    background-image: linear-gradient(#00000099, #00000099), url(img/pexels-element-digital-1370295.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: 'Quicksand', sans-serif;
-  }
-  
+
 .title {
   text-align: center;
   color: white;
   margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 20px;
+}
+
+.account-table {
+  background-color: rgba(194, 200, 204, 0.5);
+  width: 40%;
+  margin: 0 auto;
 }
   
 
-  td {
-    font-size: 20px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border: 1px solid black;
-    border-width: 3px;
-  }
-
-  
-.account-table{
+td {
+  font-size: 20px;
+  padding-top: 15px;
   text-align: center;
-  margin: auto;
-  background-color: grey;
-  max-width: 40%;
-  padding-top: 10px;
+  font-family: 'Roboto', sans-serif;
 }
+
 
 .accounts {
     padding-top: 20px;
@@ -35,6 +28,31 @@ body {
 
 h4 {
   padding-bottom: 15px;
+}
+
+.maindiv {
+  text-align: center;
+  padding: 100px 0;
+  font-family: 'Roboto', sans-serif;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 20px;
+  font-weight: light;
+}
+
+footer {
+  font-size: 15px;
+}
+
+.photo-credit {
+  color: rgb(236, 233, 226);
 }
 
 

@@ -1,9 +1,51 @@
-h1{
-  padding-top: 15px;
+.title {
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 20px;
 }
 
-h4 {
-  padding-bottom: 25px;
+.maindiv {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  width: 50%;
+  margin: 0 auto;
+}
+
+
+td {
+  font-size: 20px;
+  padding-top: 15px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.accounts {
+    padding-top: 20px;
+}
+
+p {
+  padding-bottom: 15px;
+  font-size: 20px;
+  font-weight: light;
+}
+
+
+.btn {
+  margin-bottom: 10px;
+}
+
+footer {
+  font-size: 15px;
+}
+
+.photo-credit {
+  color: rgb(236, 233, 226);
+}
+
+h1{
+  padding-top: 15px;
 }
 
 #bookshelf-table {
@@ -23,11 +65,11 @@ button {
 }
 
 #bookshelf-table tr:nth-child(even){
-  background-color: #f2f2f2;
+  background: rgba(207, 207, 207, 0.6);
 }
 
 #bookshelf-table tr:nth-child(odd){
-  background-color: #e3e3e3;
+  background: rgba(247, 247, 247, 0.6);
 }
 
 #bookshelf-table tr:hover {
@@ -37,6 +79,6 @@ button {
 #bookshelf-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #52855b;
+  background-color: #496b4f;
   color: white;
 }

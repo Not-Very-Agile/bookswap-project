@@ -5,33 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to BookSwap</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d14569afa6.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">Icon Here</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            
-            <li class="nav-item">
-              <a class="nav-link" href="/account">Account</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/myshelf">My Bookshelf</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/faq">FAQ</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
 
-    <div class="title"><h1>Welcome to BookSwap!</h1></div>
-    <div class="home-container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+      <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+      <i class="fas fa-book-reader"> Bookswap</i>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav w-100">
+        <li class="nav-item active ml-auto">
+          <a class="nav-link" href="/account">Account</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/login">Log in <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+    <br>
+    <div class="maindiv">
+      
+    <div class="title">
+      <h1>Welcome to Bookswap</h1>
+      <p>Swap your books for new reads</p>
+    </div>
+    <br>
+      
+    <!-- <div class="home-container">
         <h4>
             <a href='/login'>Login</a> if you already have an account or <a href='/signup'>signup</a> for one today.
         </h4>
@@ -39,13 +51,18 @@
 
     <br>
 
-    <div class="home-container">
-      <h4>
-          View available books <a href="/bookshelf">here.</a> 
-      </h4>
-    </div>
+    <div class="home-container"> -->
+     
+      <a href="/bookshelf" class="btn btn-dark btn-lg" role="button" aria-pressed="true">View available books</a>
+  
+      <br>
 
+      <a href="/faq" class="btn btn-dark btn-lg" role="button" aria-pressed="true">How it works</a>
+
+    </div>
+    
     <footer><a class="footer photo-credit" href="https://www.pexels.com/photo/assorted-books-on-shelf-1370295/">Photo Credit:<br>Element5 Digital</a></footer>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

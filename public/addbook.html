@@ -4,50 +4,44 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>BookSwap</title>
-        <meta name="description" content="">
+        <title>Bookswap</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <link rel="stylesheet" href="css/addbook.css" type="text/css">
+        <script src="https://kit.fontawesome.com/d14569afa6.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="">Icon Here</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/account">Account</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/myshelf">My Bookshelf</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/faq">FAQ</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        
-          <div class="title"><h1>Add a Book</h1></div>
-        
-            <div class="addbook-form">
-                <form style="border:1px solid #ccc">
-                    <div class="container">
-                      
-                      <h4 style="text-align: center; color: azure;">Search for a book <a href="/search">here.</a></h4>
-
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+          <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          <i class="fas fa-book-reader"> Bookswap</i>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100">
+            <li class="nav-item active ml-auto">
+              <a class="nav-link" href="/account">Account</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/login">Log in <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+          <div class="title"><h1>Add a Book</h1></div>       
+          <div class="maindiv">
+          <a href="/search" class="btn btn-dark btn-sm" role="button" aria-pressed="true">Search for a book</a>
+              <form>
+                  <div class="addbook-form">
                       <br>
-                      <p>Please fill in this form to add a book.</p>
-                      <hr>
+                      <p class="forminfo">Please fill in this form to add a book.</p>                  
                       
                       <div class="field">
                         <label for="username"><b>Book Title</b></label>
@@ -64,7 +58,7 @@
                         <input id="book_condition" type="text" placeholder="Enter Book Condition" name="book_condition" required>
                       </div> -->
                       
-                      <p id="book-cond-select">Please Select Book Condition:</p>
+                      <p class="forminfo">Please Select Book Condition:</p>
                       <label>
                       <input type="radio" id="likenew" name="book_condition" value="Like New">  Like New
                       </label>
@@ -78,7 +72,7 @@
                       </label><br>
                       
                       <div class="field">
-                        <label for="point_value"><b>Point Value</b></label>
+                        <label class="forminfo" for="point_value"><b>Point Value</b></label>
                         <input id="point_value" type="number" step="1" placeholder="Enter Point Value" name="point_value" required>
                       </div>
 
@@ -89,6 +83,8 @@
                     </div>
                   </form>
             </div>
+            </div>
+          </div>
         
     <footer><a class="footer photo-credit" href="https://www.pexels.com/photo/assorted-books-on-shelf-1370295/">Photo Credit:<br>Element5 Digital</a></footer>
     

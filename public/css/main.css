@@ -1,9 +1,29 @@
-.title {
+.maindiv {
     text-align: center;
-    font-size: x-large;
+    padding: 100px 0;
+    font-family: 'Roboto', sans-serif;
+    width: 50%;
+    margin: 0 auto;
 }
-  
-.home-container {
+
+.btn {
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 20px;
+    font-weight: light;
+}
+
+footer {
+    font-size: 15px;
+}
+
+.photo-credit {
+    color: rgb(236, 233, 226);
+}
+
+/* .home-container {
     color: #fff;
     text-align: center;
     margin: auto;
@@ -11,4 +31,4 @@
     padding-bottom: 1em;
     background-color: grey;
     max-width: 60%;
-}
+} */

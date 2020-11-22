@@ -6,35 +6,39 @@
     <title>BookSwap</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/shelf.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d14569afa6.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">Icon Here</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/account">Account</a>
-              </li>
-         
-            <li class="nav-item">
-              <a class="nav-link" href="/bookshelf.html">Bookshelf</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+      <i class="fas fa-book-reader"> Bookswap</i>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav w-100">
+        <li class="nav-item dropdown ml-auto">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/login">Sign In</a>
+            <a class="dropdown-item" href="/account">View Profile</a>
+            <a class="dropdown-item" href="/myshelf">My Bookshelf</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Sign Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <div class="title"><h1>Welcome to your bookshelf</h1></div>
+    <div class="title"><h1>Your bookshelf</h1></div>
     <div class="shelf-container">
 
-        <h4>Add a book <a href="/addbook">here</a></h4>
+      <a href="/addbook" class="btn btn-dark btn-lg" role="button" aria-pressed="true">Add a book</a>
     </div>
     <footer><a class="footer photo-credit" href="https://www.pexels.com/photo/assorted-books-on-shelf-1370295/">Photo Credit:<br>Element5 Digital</a></footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

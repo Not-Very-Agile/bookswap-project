@@ -1,9 +1,13 @@
 .shelf-container {
     text-align: center;
-    margin: auto;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    color: white;
-    background-color: grey;
-    max-width: 60%;
 }
+
+.title {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 20px;
+  }
+  
+ 

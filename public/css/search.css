@@ -1,22 +1,30 @@
+.title {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 20px;
+  }
+
+
 section{
     padding: 5% 0;
 }
 
-.search-books{ 
-    padding: 5%;
-}
-
-h1{
-
-    padding-top: 1%;
-}
-
 .search-books{
     padding-bottom: 1%;
+    text-align: center;
 }
 
 #search-param{
     color: black;
+}
+
+#submit-search {
+    padding: 3px;
+    background-color: #496b4f;
+    color: white;
+    margin-left: 20px;
 }
 
 .book-covers{
@@ -80,3 +88,12 @@ h3{
     text-align: center;
     margin: 1%;
 }
+
+footer {
+    font-size: 15px;
+  }
+  
+.photo-credit {
+    color: rgb(236, 233, 226);
+  }
+  

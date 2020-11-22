@@ -1,13 +1,28 @@
 body {
   background-image: linear-gradient(#00000099, #00000099), url(img/pexels-element-digital-1370295.jpg);
   background-size: cover;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .title {
   text-align: center;
   color: white;
-  font-size: x-large;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 20px;
+}
+
+.signup-form{
+  background-color: rgba(194, 200, 204, 0.45);
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 25px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+p {
+  color: white;
 }
 
 .field {
@@ -17,17 +32,25 @@ body {
 label { 
   display: block; 
   margin-bottom: .10em;
+  color: white;
+  font-weight: 500;
+  margin-right: 10px;
 }
 
-.signup-form {
-  text-align: center;
-  margin: auto;
-  background-color: grey;
-  max-width: 60%;
+#signupbtn {
+  margin-bottom: 1em;
+  background-color: #496b4f;
+  color: white;
+}
+
+.cancelbtn {
+  background-color: #cc0011;
 }
 
 .signupbtn {
-  margin-bottom: 1em;
+  margin-bottom: 10px;
+  background-color: white;
+  color: black;
 }
 
 a:link {
@@ -37,6 +60,7 @@ a:link {
 .footer {
   text-decoration: none;
   color: white;
+  font-size: 15px;
 }
 
 #username-error {

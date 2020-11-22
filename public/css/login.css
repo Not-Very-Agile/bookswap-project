@@ -36,3 +36,12 @@ label {
 a:link {
     text-decoration: none;
 }
+
+footer {
+    font-size: 15px;
+  }
+  
+  .photo-credit {
+    color: rgb(236, 233, 226);
+  }
+  

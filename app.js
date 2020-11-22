@@ -114,6 +114,21 @@ app.get("/bookshelfpull", function(req, res ,next){
     });
 });
 
+app.post("/mybookshelfpull", function(req, res ,next){
+    // displays all available books 
+    var context = {}
+    mysql.pool.query("SELECT * FROM Books WHERE book_owner=?",
+    [req.body['user']],
+    function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context= rows;
+        res.send(context);
+    });
+});
+
 app.post("/bookupdate", function (req, res) {
     // update specific book in bookshelf
     console.log(req.body);
@@ -197,7 +212,7 @@ app.post("/signup", function (req, res) {
 app.post("/addbook", function (req, res) {
     // adds user book to bookshelf
     mysql.pool.query("INSERT INTO Books (`title`, `author`, `book_condition`, `book_owner`, `point_value`) VALUES (?,?,?,?,?)",
-    [req.body.title, req.body.author, req.body.book_condition, req.body.book_owner, req.body.point_value],
+    [req.body.title, req.body.author, req.body.book_condition, req.body.book_owner, Number(req.body.point_value)],
     function(err, result){
         if(err){
             console.log(err)

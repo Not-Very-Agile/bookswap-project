@@ -1,8 +1,9 @@
 // adding delete functionality to all the available delete buttons on the page
-function addDeleteListeners(buttonList) {
+export function addDeleteListeners(buttonList) {
     for (let i=0; i < buttonList.length; i++) {
         let button = buttonList.item(i);
         button.addEventListener('click', function(event) {
+            console.log(button)
             // on user click, call delete request handler
             let rowContents = event.target.parentNode.parentElement.childNodes;
             let payload = {'bookid': rowContents[0].innerHTML};
@@ -11,7 +12,7 @@ function addDeleteListeners(buttonList) {
     }
 };
 
-function deleteHandler(item_id) {
+export function deleteHandler(item_id) {
     // post request to delete book from DB
     let url = 'http://localhost:7600/bookdelete';
     let req = new XMLHttpRequest();
@@ -23,7 +24,9 @@ function deleteHandler(item_id) {
     window.location.reload();  
 }
 
-window.addEventListener('load', function() {
-    let buttons = document.getElementsByClassName('delete');
-    addDeleteListeners(buttons);
-});
+// export { deleteHandler, addDeleteListeners,  }
+
+// window.addEventListener('load', function() {
+//     let buttons = document.getElementsByClassName('delete');
+//     addDeleteListeners(buttons);
+// });

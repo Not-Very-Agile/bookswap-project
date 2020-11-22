@@ -150,6 +150,7 @@ app.post("/bookupdate", function (req, res) {
 
 app.post("/bookdelete", function (req, res) {
     // delete specific book in bookshelf
+    console.log("delete")
     console.log(req.body);
     res.status(200);
     mysql.pool.query('DELETE FROM books WHERE bookid=?', req.body.bookid, function(err, result){

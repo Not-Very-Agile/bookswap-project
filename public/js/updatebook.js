@@ -1,4 +1,4 @@
-function addUpdateListeners(buttonList) {
+export function addUpdateListeners(buttonList) {
     for (let i=0; i < buttonList.length; i++) {
         let button = buttonList.item(i);
         button.addEventListener('click', function(event) {
@@ -106,7 +106,7 @@ function addUpdateListeners(buttonList) {
     }
 }  
 
-function submitData(payload) {
+export function submitData(payload) {
     let url = 'http://localhost:7600/bookupdate';
     let req = new XMLHttpRequest();
     req.open("POST", url, true);
@@ -117,7 +117,9 @@ function submitData(payload) {
     window.location.reload();    
 }
 
-window.addEventListener('load', function() {
-    let buttons = document.getElementsByClassName('update');
-    addUpdateListeners(buttons);
-});
+// export { submitData, addUpdateListeners }
+
+// window.addEventListener('load', function() {
+//     let buttons = document.getElementsByClassName('update');
+//     addUpdateListeners(buttons);
+// });

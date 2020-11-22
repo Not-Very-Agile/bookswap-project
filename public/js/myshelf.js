@@ -1,3 +1,7 @@
+import * as deleteBooks from './deletebook.js';
+import * as updateBooks from './updatebook.js';
+
+
 const user = localStorage.getItem('user');
 const data = {'user': user}
 
@@ -13,10 +17,18 @@ $.ajax({
     }
 });
 
+function createListeners() {
+    let buttons = document.getElementsByClassName('delete');
+    deleteBooks.addDeleteListeners(buttons);
+    let updateButtons = document.getElementsByClassName('update');
+    updateBooks.addUpdateListeners(updateButtons);
+};
+
 function createBookshelfTable(data) {
     for (var i = 0; i < data.length; i++) {
         createBookshelfRows(data[i]);
     }
+    createListeners();
 }
 
 function createBookshelfRows(rowData) {

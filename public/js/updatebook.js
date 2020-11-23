@@ -1,10 +1,7 @@
 export function createRadioButtons() {
-    // radio buttons will be children of book condition td
     let radio_new = document.createElement('input');
     let radio_good = document.createElement('input');
     let radio_worn = document.createElement('input');
-
-    // condition turns into 3 radio buttons
     radio_new.setAttribute('type', 'radio');
     radio_new.setAttribute('id', 'likenew');
     radio_new.setAttribute('value', 'Like New');
@@ -22,7 +19,6 @@ export function createRadioButtons() {
 }
 
 export function createRadioLabels() {
-    // labels for each of the radio buttons along with attributes
     let label_new = document.createElement('label');
     let label_good = document.createElement('label');
     let label_worn = document.createElement('label');
@@ -49,12 +45,9 @@ export function addUpdateListeners(buttonList) {
                 'points': rowContents[4].innerHTML
             };
             
-            // text input elements for title and author
             let title_field = document.createElement('input');
             let author_field = document.createElement('input');
             let points_field = document.createElement('input');
-            
-            // convert inputs with appropriate names and content
             title_field.setAttribute('type', 'text');
             title_field.setAttribute('value', row.title);
             author_field.setAttribute('type', 'text');
@@ -62,7 +55,6 @@ export function addUpdateListeners(buttonList) {
             points_field.setAttribute('type', 'number');
             points_field.setAttribute('value', row.points);
 
-            // replace children of row with input fields
             rowContents[1].innerHTML = "";
             rowContents[1].appendChild(title_field);
             rowContents[2].innerHTML = "";
@@ -70,7 +62,6 @@ export function addUpdateListeners(buttonList) {
             rowContents[4].innerHTML = "";
             rowContents[4].appendChild(points_field);
             
-            // radio buttons
             let radios = createRadioButtons();
             let radio_labels = createRadioLabels();
             
@@ -80,7 +71,7 @@ export function addUpdateListeners(buttonList) {
                     radios[i].checked = true;
                 }
             };
-            // create radio group
+
             let radio_group = [];
             for (let i=0; i < 3; i++) {
                 radio_group.push(radios[i]);
@@ -103,7 +94,7 @@ export function addUpdateListeners(buttonList) {
             doneButton.innerHTML = "Done";
             actionsCell.appendChild(doneButton);
 
-            // click done button - submit post to /bookupdate (/bookupdate will update the DB result)
+            // click done button - submit post to /bookupdate
             doneButton.addEventListener('click', function(event) {
                 let updatedRow = event.target.parentNode.parentElement;
                 let payload = {
@@ -116,7 +107,6 @@ export function addUpdateListeners(buttonList) {
                 // get current radio button value
                 let radio_selects = [updatedRow.childNodes[3].childNodes[0], updatedRow.childNodes[3].childNodes[2], updatedRow.childNodes[3].childNodes[4]];
                 for (let i = 0; i < radio_selects.length; i++) {
-                    // console.log(radio_selects[i].checked);
                     if (radio_selects[i].checked) {
                         payload['condition'] = radio_selects[i].value;
                     }
@@ -137,10 +127,3 @@ export function submitData(payload) {
     req.send(payload);
     window.location.reload();    
 }
-
-// export { submitData, addUpdateListeners }
-
-// window.addEventListener('load', function() {
-//     let buttons = document.getElementsByClassName('update');
-//     addUpdateListeners(buttons);
-// });

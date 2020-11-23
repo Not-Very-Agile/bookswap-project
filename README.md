@@ -24,6 +24,11 @@ Create a ‘.env’ file in the root of the project folder and add the following
   USERNAME="root" <br />
   PASS="<passwordyoucreatedoninstall>" <br />
   DATABASE="bookswap" <br />
+  
+# Run App
+
+Navigate to root of project folder <br />
+node app.js <br />
 
 # Navigate App
 Navigate to http://localhost:7600/ <br />

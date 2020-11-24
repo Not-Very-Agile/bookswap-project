@@ -303,7 +303,7 @@ app.get('/reset-books', function (req, res, next) {
             "book_condition VARCHAR(255)," +
             "book_owner VARCHAR(255)," +
             "point_value INT)";
-            //"FOREIGN KEY (book_owner) REFERENCES Users(userid))";
+            "FOREIGN KEY (book_owner) REFERENCES Users(userid))";
         mysql.pool.query(createString, function (err) {
             context.results = "Books Table reset";
             console.log(err);

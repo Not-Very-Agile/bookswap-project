@@ -283,7 +283,8 @@ app.get('/reset-users', function (req, res, next) {
             "last_name VARCHAR(255)," +
             "email VARCHAR(255)," +
             "address VARCHAR(255)," +
-            "password VARCHAR(255))";
+            "password VARCHAR(255)," +
+            "points INT)";
         mysql.pool.query(createString, function (err) {
             context.results = "Users Table reset";
             console.log(err);
@@ -319,6 +320,7 @@ app.get('/reset-swaps', function (req, res, next) {
             "request_user INT," +
             "owning_user INT," +
             "book INT," +
+            "swap_status ENUM ('in progress', 'rejected', 'complete')," +
             "FOREIGN KEY (request_user) REFERENCES Users(userid)," +
             "FOREIGN KEY (owning_user) REFERENCES Users(userid)," +
             "FOREIGN KEY (book) REFERENCES Books(bookid))";

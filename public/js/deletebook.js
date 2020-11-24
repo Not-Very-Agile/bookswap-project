@@ -4,7 +4,6 @@ export function addDeleteListeners(buttonList) {
         let button = buttonList.item(i);
         button.addEventListener('click', function(event) {
             console.log(button)
-            // on user click, call delete request handler
             let rowContents = event.target.parentNode.parentElement.childNodes;
             let payload = {'bookid': rowContents[0].innerHTML};
             deleteHandler(payload);
@@ -23,10 +22,3 @@ export function deleteHandler(item_id) {
     req.send(item_id);
     window.location.reload();  
 }
-
-// export { deleteHandler, addDeleteListeners,  }
-
-// window.addEventListener('load', function() {
-//     let buttons = document.getElementsByClassName('delete');
-//     addDeleteListeners(buttons);
-// });

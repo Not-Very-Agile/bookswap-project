@@ -133,8 +133,8 @@ app.post("/bookupdate", function (req, res) {
     // update specific book in bookshelf
     console.log(req.body);
     res.status(200);
-    mysql.pool.query('UPDATE books SET title=?, author=?, book_condition=? WHERE bookid=?',
-    [req.body.title, req.body.author, req.body.condition, req.body.id],
+    mysql.pool.query('UPDATE books SET title=?, author=?, book_condition=?, point_value=? WHERE bookid=?',
+    [req.body.title, req.body.author, req.body.condition, req.body.points, req.body.id],
     function(err, result){
         if(err){
             console.log(err)

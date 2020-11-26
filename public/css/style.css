@@ -19,6 +19,17 @@ body{
     position: relative;
 }
 
+#point-display {
+    padding-right: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border: 2px solid white;
+    max-width: 20%;
+    float: right;
+    border-radius: 25px;
+}
+
 section{
     padding: 5% 0;
 }

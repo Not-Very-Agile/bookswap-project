@@ -22,6 +22,8 @@ function displayPoints(data) {
         if (data[i].username == currUser) {
             document.getElementById("point-display").innerHTML = "User Points: " + data[i].points
             console.log(data)
+        } if (currUser == null) {
+            document.getElementById("point-display").style = "display: none;"
         } else {
             continue;
         }

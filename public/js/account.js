@@ -1,10 +1,10 @@
-let currUser = getCurrentUser();
+// let currUser = getCurrentUser();
 
-function getCurrentUser(){
-    let currentUser = localStorage.getItem('user');
-    console.log(currentUser);
-    return currentUser;
-}
+// function getCurrentUser(){
+//     let currentUser = localStorage.getItem('user');
+//     console.log(currentUser);
+//     return currentUser;
+// }
 
 function createAccountObject() {
     var userName = document.getElementById("userName").value;

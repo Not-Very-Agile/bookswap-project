@@ -3,7 +3,7 @@
   color: white;
   margin-bottom: 10px;
   font-family: 'Roboto', sans-serif;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .maindiv {
@@ -11,6 +11,10 @@
   font-family: 'Roboto', sans-serif;
   width: 50%;
   margin: 0 auto;
+}
+
+#point-display {
+  padding-bottom: 2px;
 }
 
 

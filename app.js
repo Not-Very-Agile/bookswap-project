@@ -227,6 +227,27 @@ app.post("/addbook", function (req, res) {
     });
 });
 
+app.post("/addswap", function (req, res) {
+    // adds user book to bookshelf
+    mysql.pool.query("INSERT INTO Swaps(request_user, owning_user, book, swap_status) VALUES (\
+        (SELECT userid FROM Users WHERE username=?),\
+        (SELECT userid FROM Users WHERE username=?),\
+        (SELECT bookid FROM Books WHERE title=?),\
+        1)",
+    [req.body.reqUser, req.body.owner, req.body.bookTitle],
+    function(err, result){
+        if(err){
+            console.log(err)
+            next(err)
+            return;
+        } else {
+        console.log(result)
+        console.log(req.body)
+        res.send(true);
+        }
+    });
+});
+
 app.post("/myshelf", function (req, res) {
     // validateCreds and send appropriate page
     var context = {}

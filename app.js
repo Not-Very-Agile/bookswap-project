@@ -296,7 +296,6 @@ app.post("/rejectswap", function (req, res) {
 })
 
 
-
 app.post("/myshelf", function (req, res) {
     // validateCreds and send appropriate page
     var context = {}

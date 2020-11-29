@@ -249,7 +249,7 @@ app.post("/addswap", function (req, res) {
 });
 
 app.post("/acceptswap", function (req, res) {
-    // updates swap status to accept for book
+    // book owner accepts swap
     mysql.pool.query("UPDATE Swaps SET swap_status=? WHERE owning_user=(SELECT userid FROM Users WHERE username=?)\
         AND bookid=(SELECT bookid FROM Books WHERE title=?)",
     [req.body.status, req.body.owner, req.body.bookTitle],
@@ -264,7 +264,7 @@ app.post("/acceptswap", function (req, res) {
         }
     }, mysql.pool.query("UPDATE Books SET book_owner=(SELECT request_user FROM Swaps WHERE\
         owning_user=(SELECT userid FROM Users WHERE username=?)\
-        AND bookid=(SELECT bookid FROM Books WHERE title=?)"),
+        AND bookid=(SELECT bookid FROM Books WHERE title=?))"),
     [req.body.owner],
     function(err, result){
         if(err){
@@ -279,8 +279,20 @@ app.post("/acceptswap", function (req, res) {
 });
 
 app.post("/rejectswap", function (req, res) {
+    // book owner rejects swap
     mysql.pool.query("DELETE FROM Swaps WHERE owner_user=(SELECT userid FROM Users WHERE username=?)\
-    AND bookid=(SELECT bookid FROM Books WHERE title=?)")
+    AND bookid=(SELECT bookid FROM Books WHERE title=?)"),
+    [req.body.status, req.body.owner, req.body.bookTitle],
+    function(err, result){
+        if(err){
+            console.log(err)
+            next(err)
+            return;
+        } else {
+        console.log(result)
+        res.send(true);
+        }
+    }
 })
 
 

@@ -341,7 +341,7 @@ app.get('/reset-swaps', function (req, res, next) {
             "request_user INT," +
             "owning_user INT," +
             "book INT," +
-            "swap_status ENUM ('in progress', 'rejected', 'complete')," +
+            "swap_status ENUM ('requested', 'accepted', 'rejected', 'sent', 'complete')," +
             "FOREIGN KEY (request_user) REFERENCES Users(userid)," +
             "FOREIGN KEY (owning_user) REFERENCES Users(userid)," +
             "FOREIGN KEY (book) REFERENCES Books(bookid))";

@@ -56,7 +56,40 @@ footer {
   color: rgb(236, 233, 226);
 }
 
+#swap-table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;  
+  text-align: center;
+}
 
+button {
+  background-color: #e0de65;
+}
+
+#swap-table td, #swap-table th {
+  border: 1px solid#ddd;
+  padding: 8px;
+}
+
+#swap-table tr:nth-child(even){
+  background: rgba(207, 207, 207, 0.6);
+}
+
+#swap-table tr:nth-child(odd){
+  background: rgba(247, 247, 247, 0.6);
+}
+
+#swap-table tr:hover {
+  background-color: #c4c8cf;
+}
+
+#swap-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #496b4f;
+  color: white;
+}
   
   
 

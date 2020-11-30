@@ -242,7 +242,7 @@ app.post("/addbook", function (req, res) {
 });
 
 app.post("/addswap", function (req, res) {
-    // adds user book to bookshelf
+    // Initiates a new swap
     mysql.pool.query("INSERT INTO Swaps(request_user, owning_user, book, swap_status) VALUES (\
         (SELECT userid FROM Users WHERE username=?),\
         (SELECT userid FROM Users WHERE username=?),\

@@ -262,7 +262,7 @@ app.post("/addswap", function (req, res) {
     });
 });
 
-app.post("/userswap", function (req, res) {
+app.post("/ownerswaps", function (req, res) {
     // Queries database to get owning user swaps
     mysql.pool.query("SELECT title, author, book_condition\
     FROM Books b\

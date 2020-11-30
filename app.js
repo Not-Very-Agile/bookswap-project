@@ -129,6 +129,20 @@ app.post("/mybookshelfpull", function(req, res ,next){
     });
 });
 
+app.post("/swaprequestpull", function(req, res, next){
+    var context = {};
+    mysql.pool.query('SELECT * FROM Swaps WHERE owning_user=(SELECT userid FROM Users WHERE username=?)',
+    [req.body['user']],
+    function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context= rows;
+        res.send(context);
+    });
+});
+
 app.post("/bookupdate", function (req, res) {
     // update specific book in bookshelf
     console.log(req.body);

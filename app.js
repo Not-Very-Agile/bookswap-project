@@ -312,7 +312,7 @@ app.post("/acceptswap", function (req, res) {
         }
     }, mysql.pool.query("UPDATE Books SET book_owner=(SELECT request_user FROM Swaps WHERE\
         owning_user=(SELECT userid FROM Users WHERE username=?)\
-        AND bookid=(SELECT bookid FROM Books WHERE title=?))"),
+        AND bookid=(SELECT bookid FROM Books WHERE title=?))",
     [req.body.owner],
     function(err, result){
         if(err){
@@ -323,8 +323,8 @@ app.post("/acceptswap", function (req, res) {
         console.log(result)
         res.send(true);
         }
-    });
-});
+    })
+)});
 
 app.post("/rejectswap", function (req, res) {
     // book owner rejects swap

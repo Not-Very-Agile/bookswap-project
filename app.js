@@ -330,7 +330,7 @@ app.post("/rejectswap", function (req, res) {
     // book owner rejects swap
     mysql.pool.query("DELETE FROM Swaps WHERE owner_user=(SELECT userid FROM Users WHERE username=?)\
     AND bookid=(SELECT bookid FROM Books WHERE title=?)"),
-    [req.body.status, req.body.owner, req.body.bookTitle],
+    [req.body.owner, req.body.bookTitle],
     function(err, result){
         if(err){
             console.log(err)

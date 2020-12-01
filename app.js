@@ -132,7 +132,7 @@ app.post("/mybookshelfpull", function(req, res ,next){
 app.post("/swaprequestpull", function(req, res, next){
     var context = {};
     mysql.pool.query('SELECT * FROM Swaps WHERE owning_user=(SELECT userid FROM Users WHERE username=?)\
-    AND swap_status=1"),
+    AND swap_status=1',
     [req.body['user']],
     function(err, rows, fields){
         if(err){

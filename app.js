@@ -238,7 +238,7 @@ app.post("/addbook", function (req, res) {
         console.log(req.body)
         }
     }, mysql.pool.query("UPDATE Users SET points=? WHERE username=?",
-    [Number(req.body.point_value), req.body.book_owner],
+    [Math.floor(Number(req.body.point_value) / 3), req.body.book_owner],
     function(err, result){
         if(err){
             console.log(err)

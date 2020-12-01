@@ -257,10 +257,7 @@ app.post("/addbook", function (req, res) {
 app.post("/addswap", function (req, res) {
     // Initiates a new swap
     mysql.pool.query("INSERT INTO Swaps(request_user, owning_user, book, swap_status) VALUES (\
-        (SELECT userid FROM Users WHERE username=?),\
-        (SELECT userid FROM Users WHERE username=?),\
-        (SELECT bookid FROM Books WHERE title=?),\
-        1)",
+        (SELECT userid FROM Users WHERE username=?),?,?,1)",
     [req.body.reqUser, req.body.owner, req.body.bookTitle],
     function(err, result){
         if(err){
@@ -282,7 +279,8 @@ app.post("/ownerswaps", function (req, res) {
     FROM Books b\
     INNER JOIN (SELECT book\
         FROM Swaps\
-        WHERE owning_user = (SELECT userid FROM Users WHERE username = ?)) AS us\
+        WHERE owning_user = (SELECT userid FROM Users WHERE username = ? AND\
+        swap_status = 1)) AS us\
         WHERE us.book = b.bookid;",
     [req.body.reqUser],
     function(err, rows, fields){

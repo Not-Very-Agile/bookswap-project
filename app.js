@@ -131,7 +131,8 @@ app.post("/mybookshelfpull", function(req, res ,next){
 
 app.post("/swaprequestpull", function(req, res, next){
     var context = {};
-    mysql.pool.query('SELECT * FROM Swaps WHERE owning_user=(SELECT userid FROM Users WHERE username=?)',
+    mysql.pool.query('SELECT * FROM Swaps WHERE owning_user=(SELECT userid FROM Users WHERE username=?)\
+    AND swap_status=1"),
     [req.body['user']],
     function(err, rows, fields){
         if(err){
@@ -238,7 +239,7 @@ app.post("/addbook", function (req, res) {
         console.log(req.body)
         }
     }, mysql.pool.query("UPDATE Users SET points=? WHERE username=?",
-    [Number(req.body.point_value), req.body.book_owner],
+    [Math.floor(Number(req.body.point_value) / 3), req.body.book_owner],
     function(err, result){
         if(err){
             console.log(err)

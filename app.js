@@ -236,9 +236,21 @@ app.post("/addbook", function (req, res) {
         } else {
         console.log(result)
         console.log(req.body)
+        }
+    }, mysql.pool.query("UPDATE Users SET points=? WHERE username=?",
+    [Number(req.body.point_value), req.body.book_owner],
+    function(err, result){
+        if(err){
+            console.log(err)
+            next(err)
+            return;
+        } else {
+        console.log(result)
+        console.log(req.body)
         res.send(true);
         }
-    });
+    })
+    );
 });
 
 app.post("/addswap", function (req, res) {
@@ -341,8 +353,13 @@ app.post("/myshelf", function (req, res) {
           next(err);
           return;
         }
-        var password = JSON.parse(JSON.stringify(result))[0].password;
-        if(password == req.body.pass){
+        var password = JSON.parse(JSON.stringify(result))[0];
+        console.log(password)
+        if (typeof password === 'undefined') {
+            res.send(false)
+            return
+        }
+        if(password.password == req.body.pass){
             res.send(true);
         }
         else {

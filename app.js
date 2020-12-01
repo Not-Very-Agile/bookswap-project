@@ -282,7 +282,8 @@ app.post("/ownerswaps", function (req, res) {
     FROM Books b\
     INNER JOIN (SELECT book\
         FROM Swaps\
-        WHERE owning_user = (SELECT userid FROM Users WHERE username = ?)) AS us\
+        WHERE owning_user = (SELECT userid FROM Users WHERE username = ? AND\
+        swap_status = 1)) AS us\
         WHERE us.book = b.bookid;",
     [req.body.reqUser],
     function(err, rows, fields){

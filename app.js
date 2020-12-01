@@ -258,7 +258,7 @@ app.post("/addswap", function (req, res) {
     // Initiates a new swap
     mysql.pool.query("INSERT INTO Swaps(request_user, owning_user, book, swap_status) VALUES (\
         (SELECT userid FROM Users WHERE username=?),?,?,1)",
-    [req.body.reqUser, req.body.owner, req.body.bookTitle],
+    [req.body.reqUser, req.body.owner, req.body.bookid],
     function(err, result){
         if(err){
             console.log(err)

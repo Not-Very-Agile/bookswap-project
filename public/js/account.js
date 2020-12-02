@@ -34,8 +34,8 @@ $.ajax({
     data: JSON.stringify(data),
     contentType: "application/json",
     dataType: "JSON",
-
     success: function(data) {
+        console.log(data); // remove when complete
         createSwapTable(data);
     }
 });
@@ -53,11 +53,33 @@ function createAccountTable(data) {
     }
 };
 
+function rejectListeners(buttons) {
+    for (let i=0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function(event) {
+            // console.log('clicked');
+            let id = event.target.parentNode.parentElement.childNodes[1].innerHTML;
+            let book_owner = user;
+            let payload = {
+                bookid: id,
+                owner: book_owner
+            };
+            
+            const url = "http://localhost:7600/rejectswap";
+            let req = new XMLHttpRequest();
+            req.open("POST", url, true);
+            req.setRequestHeader("Content-Type", "application/json");
+            payload = JSON.stringify(payload);
+            console.log("sending payload:", payload);
+            req.send(payload);
+        });
+    }
+};
+
 function createListeners() {
-    let acceptButtons = document.getElementsByClassName('accept');
+    // let acceptButtons = document.getElementsByClassName('accept');
     //acceptSwap.addDeleteListeners(acceptButtons);
     let rejectButtons = document.getElementsByClassName('reject');
-    //rejectSwap.addUpdateListeners(rejectButtons);
+    rejectListeners(rejectButtons);
 };
 
 function createSwapTable(data) {

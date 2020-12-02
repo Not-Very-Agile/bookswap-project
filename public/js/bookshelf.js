@@ -1,3 +1,4 @@
+// Display all available books
 $.ajax({
     url: 'http://localhost:7600/bookshelfpull',
     type: "GET",
@@ -26,6 +27,7 @@ function createBookshelfRows(rowData) {
         row.append($("<td>" + rowData.point_value + "</td>"));
         row.append($("<td>" + "<button class='swapbtn' onclick='initiateSwap()'>" + "Request Swap" + "</button>" + "</td>"));
 }
+
 
 // Initiate a swap
 function createSwapObject(){

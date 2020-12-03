@@ -54,7 +54,7 @@ function initiateSwap(){
             },
             body: JSON.stringify(swapObject)
             })
-            // window.location.href = "/bookshelf";
+            window.location.href = "/bookshelf";
         });
     }
 }

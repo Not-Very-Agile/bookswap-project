@@ -26,7 +26,7 @@ function createBookshelfRows(rowData, num) {
         row.append($("<td>" + rowData.author + "</td>"));
         row.append($("<td>" + rowData.book_condition + "</td>"));
         row.append($("<td>" + rowData.point_value + "</td>"));
-        row.append($("<td>" + "<button class='swapbtn'>" + "Request Swap" + "</button>" + "</td>"));
+        row.append($("<td>" + "<button id='swapbtn_" + num + "' class='swapbtn'>" + "Request Swap" + "</button>" + "</td>"));
 }
 
 
@@ -45,6 +45,7 @@ function initiateSwap(){
     for (let i = 0; i < swapBtns.length; i++){
         swapBtns[i].addEventListener('click', function(){
             let swapObject = createSwapObject(i);
+            let swapButton = document.getElementById("swapbtn_" + i);
             console.log(swapObject)
             const url = "/addswap"
             fetch(url, {
@@ -54,7 +55,8 @@ function initiateSwap(){
             },
             body: JSON.stringify(swapObject)
             })
-            window.location.href = "/bookshelf";
+            swapButton.textContent = "Swap Requested"
+            swapButton.style.backgroundColor = 'red';
         });
     }
 }

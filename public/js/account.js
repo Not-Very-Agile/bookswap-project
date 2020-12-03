@@ -64,13 +64,14 @@ function rejectListeners(buttons) {
                 owner: book_owner
             };
             
-            const url = "http://localhost:7600/rejectswap";
+            const url = "/rejectswap";
             let req = new XMLHttpRequest();
             req.open("POST", url, true);
             req.setRequestHeader("Content-Type", "application/json");
             payload = JSON.stringify(payload);
             console.log("sending payload:", payload);
             req.send(payload);
+            window.location.href = '/account'
         });
     }
 };

@@ -302,8 +302,8 @@ app.post("/ownerswaps", function (req, res) {
 app.post("/acceptswap", function (req, res) {
     // book owner accepts swap
     mysql.pool.query("UPDATE Swaps SET swap_status=? WHERE owning_user=(SELECT userid FROM Users WHERE username=?)\
-        AND bookid=(SELECT bookid FROM Books WHERE title=?)",
-    [req.body.status, req.body.owner, req.body.bookTitle],
+        AND book=?",
+    [req.body.status, req.body.owner, req.body.bookid],
     function(err, result){
         if(err){
             console.log(err)
@@ -315,8 +315,8 @@ app.post("/acceptswap", function (req, res) {
         }
     }, mysql.pool.query("UPDATE Books SET book_owner=(SELECT request_user FROM Swaps WHERE\
         owning_user=(SELECT userid FROM Users WHERE username=?)\
-        AND bookid=(SELECT bookid FROM Books WHERE title=?))",
-    [req.body.owner],
+        AND book=?)",
+    [req.body.owner, req.body.bookid],
     function(err, result){
         if(err){
             console.log(err)

@@ -76,9 +76,34 @@ function rejectListeners(buttons) {
     }
 };
 
+function acceptListeners(buttons) {
+    for (let i=0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function(event) {
+            // console.log('clicked');
+            let id = event.target.parentNode.parentNode.childNodes[0].innerHTML;
+            let book_owner = user;
+            let payload = {
+                status: '5',
+                bookid: id,
+                owner: book_owner
+            };
+            console.log(payload);
+
+            const url = "/acceptswap";
+            let req = new XMLHttpRequest();
+            req.open("POST", url, true);
+            req.setRequestHeader("Content-Type", "application/json");
+            payload = JSON.stringify(payload);
+            console.log("sending payload:", payload);
+            req.send(payload);
+            window.location.href = '/account'
+        });
+    }
+};
+
 function createListeners() {
-    // let acceptButtons = document.getElementsByClassName('accept');
-    //acceptSwap.addDeleteListeners(acceptButtons);
+    let acceptButtons = document.getElementsByClassName('accept');
+    acceptListeners(acceptButtons);
     let rejectButtons = document.getElementsByClassName('reject');
     rejectListeners(rejectButtons);
 };
@@ -94,7 +119,7 @@ function createSwapRows(rowData) {
     var row = $("<tr />")
     $("#swap-table").append(row);
         row.append($("<td hidden>" + rowData.book + "</td>"));
-        row.append($("<td>" + rowData.book + "</td>"));
+        row.append($("<td>" + rowData.title + "</td>"));
         row.append($("<td>" + rowData.swap_status + "</td>"));
         row.append($("<td>" 
                     + "<button class='accept'>" + "Accept" +  "</button>" 

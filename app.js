@@ -278,7 +278,7 @@ app.post("/addswap", function (req, res) {
 app.post("/ownerswaps", function (req, res) {
     // Queries database to get owning user swaps
     var context = {}
-    mysql.pool.query("SELECT title, author, point_value\
+    mysql.pool.query("SELECT title, bookid, point_value\
     FROM Books b\
     INNER JOIN (SELECT book\
         FROM Swaps\

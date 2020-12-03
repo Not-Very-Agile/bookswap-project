@@ -278,14 +278,14 @@ app.post("/addswap", function (req, res) {
 app.post("/ownerswaps", function (req, res) {
     // Queries database to get owning user swaps
     var context = {}
-    mysql.pool.query("SELECT title, author, book_condition\
+    mysql.pool.query("SELECT title, author, point_value\
     FROM Books b\
     INNER JOIN (SELECT book\
         FROM Swaps\
         WHERE owning_user = (SELECT userid FROM Users WHERE username = ? AND\
         swap_status = 1)) AS us\
         WHERE us.book = b.bookid;",
-    [req.body.reqUser],
+    [req.body['user']],
     function(err, rows, fields){
         if(err){
             console.log(err)

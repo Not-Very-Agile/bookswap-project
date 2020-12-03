@@ -29,7 +29,7 @@ $.ajax({
 });
 
 $.ajax({
-    url: 'http://localhost:7600/swaprequestpull',
+    url: 'http://localhost:7600/ownerswaps',
     type: "POST",
     data: JSON.stringify(data),
     contentType: "application/json",
@@ -120,7 +120,7 @@ function createSwapRows(rowData) {
     $("#swap-table").append(row);
         row.append($("<td hidden>" + rowData.book + "</td>"));
         row.append($("<td>" + rowData.title + "</td>"));
-        row.append($("<td>" + rowData.swap_status + "</td>"));
+        row.append($("<td>" + rowData.point_value + "</td>"));
         row.append($("<td>" 
                     + "<button class='accept'>" + "Accept" +  "</button>" 
                     + "<button class='reject'>" + "Reject" + "</button>"

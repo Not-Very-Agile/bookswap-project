@@ -118,7 +118,7 @@ function createSwapTable(data) {
 function createSwapRows(rowData) {
     var row = $("<tr />")
     $("#swap-table").append(row);
-        row.append($("<td hidden>" + rowData.book + "</td>"));
+        row.append($("<td hidden>" + rowData.bookid + "</td>"));
         row.append($("<td>" + rowData.title + "</td>"));
         row.append($("<td>" + rowData.point_value + "</td>"));
         row.append($("<td>" 

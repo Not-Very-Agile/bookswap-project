@@ -35,7 +35,6 @@ $.ajax({
     contentType: "application/json",
     dataType: "JSON",
     success: function(data) {
-        console.log(data); // remove when complete
         createSwapTable(data);
     }
 });
@@ -56,7 +55,6 @@ function createAccountTable(data) {
 function rejectListeners(buttons) {
     for (let i=0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function(event) {
-            // console.log('clicked');
             let id = event.target.parentNode.parentElement.childNodes[1].innerHTML;
             let book_owner = user;
             let payload = {
@@ -126,7 +124,3 @@ function createSwapRows(rowData) {
                     + "<button class='reject'>" + "Reject" + "</button>"
                     + "</td>"));
 }
-
-
-
-

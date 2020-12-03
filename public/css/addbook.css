@@ -18,6 +18,7 @@
   }
 
 form {
+  color: white;
   margin-top: 15px;
 }
 
@@ -41,6 +42,7 @@ a {
     background-color: rgba(194, 200, 204, 0.5);
     max-width: 60%;
     border-radius: 25px;
+    padding-bottom: 30px;
   }
   
   .addbtn {

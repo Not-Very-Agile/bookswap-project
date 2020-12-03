@@ -239,7 +239,7 @@ app.post("/addbook", function (req, res) {
         console.log(result)
         console.log(req.body)
         }
-    }, mysql.pool.query("UPDATE Users SET points=? WHERE username=?",
+    }, mysql.pool.query("UPDATE Users SET points= points + ? WHERE username=?",
     [Math.floor(Number(req.body.point_value) / 3), req.body.book_owner],
     function(err, result){
         if(err){
@@ -300,9 +300,8 @@ app.post("/ownerswaps", function (req, res) {
 });
 
 function updateReceiverPoints(req) {
-    mysql.pool.query("Update Users SET points = points - (select point_value from books where bookid=?) WHERE username=(select request_user from swaps\
-            WHERE owning_user=(SELECT userid FROM Users WHERE username=?) AND book=?)",
-       [req.body.bookid,req.body.owner,req.body.bookid],
+    mysql.pool.query("Update Users SET points = (points - (select point_value from books where bookid=?)) WHERE userid=(select request_user from swaps WHERE book=?)",
+       [Number(req.body.bookid),Number(req.body.bookid)],
         function(err, result){
             if(err){
                 console.log(err)
@@ -317,8 +316,8 @@ function updateReceiverPoints(req) {
 }
 
 function updateOwnerPoints(req) {
-    mysql.pool.query("Update Users SET points = points + (select point_value from books where bookid=?) WHERE username=?",
-    [req.body.bookid,req.body.owner,req.body.bookid],
+    mysql.pool.query("Update Users SET points = (points + (select point_value from books where bookid=?)) WHERE username=?",
+    [Number(req.body.bookid),req.body.owner],
         function(err, result){
             if(err){
                 console.log(err)
@@ -333,17 +332,16 @@ function updateOwnerPoints(req) {
 }
 
 function deleteSwap(req) {
-    mysql.pool.query("DELETE Swaps WHERE owning_user=(SELECT userid FROM Users WHERE username=?)\
-            AND book=?",
-        [req.body.owner, req.body.bookid],
+    mysql.pool.query("DELETE FROM Swaps WHERE owning_user=(SELECT userid FROM Users WHERE username=?) AND book=?",
+        [req.body.owner, Number(req.body.bookid)],
         function(err, result){
             if(err){
                 console.log(err)
-                next(err)
+                console.log('why')
                 return;
             } else {
                 console.log(result)
-                res.send(true);
+                return;
             }
         }
     )
@@ -354,7 +352,7 @@ app.post("/acceptswap", function (req, res) {
     mysql.pool.query("UPDATE Books SET book_owner=(SELECT request_user FROM Swaps WHERE\
         owning_user=(SELECT userid FROM Users WHERE username=?)\
         AND book=?)",
-    [req.body.owner, req.body.bookid],
+    [req.body.owner, Number(req.body.bookid)],
     function(err, result){
         if(err){
             console.log(err)
@@ -366,7 +364,7 @@ app.post("/acceptswap", function (req, res) {
             updateReceiverPoints(req)
         }
     })
-}
+})
 
 
 app.post("/rejectswap", function (req, res) {

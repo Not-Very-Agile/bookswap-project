@@ -299,21 +299,59 @@ app.post("/ownerswaps", function (req, res) {
     });
 });
 
+function updateReceiverPoints(req) {
+    mysql.pool.query("Update Users SET points = points - (select point_value from books where bookid=?) WHERE username=(select request_user from swaps\
+            WHERE owning_user=(SELECT userid FROM Users WHERE username=?) AND book=?)",
+       [req.body.bookid,req.body.owner,req.body.bookid],
+        function(err, result){
+            if(err){
+                console.log(err)
+                next(err)
+                return;
+            } else {
+                console.log(result)
+                updateOwnerPoints(req)
+            }
+        }
+    )
+}
+
+function updateOwnerPoints(req) {
+    mysql.pool.query("Update Users SET points = points + (select point_value from books where bookid=?) WHERE username=?",
+    [req.body.bookid,req.body.owner,req.body.bookid],
+        function(err, result){
+            if(err){
+                console.log(err)
+                next(err)
+                return;
+            } else {
+                console.log(result)
+                deleteSwap(req)
+            }
+        }
+    )
+}
+
+function deleteSwap(req) {
+    mysql.pool.query("DELETE Swaps WHERE owning_user=(SELECT userid FROM Users WHERE username=?)\
+            AND book=?",
+        [req.body.owner, req.body.bookid],
+        function(err, result){
+            if(err){
+                console.log(err)
+                next(err)
+                return;
+            } else {
+                console.log(result)
+                res.send(true);
+            }
+        }
+    )
+};
+
 app.post("/acceptswap", function (req, res) {
     // book owner accepts swap
-    mysql.pool.query("UPDATE Swaps SET swap_status=? WHERE owning_user=(SELECT userid FROM Users WHERE username=?)\
-        AND book=?",
-    [req.body.status, req.body.owner, req.body.bookid],
-    function(err, result){
-        if(err){
-            console.log(err)
-            next(err)
-            return;
-        } else {
-        console.log(result)
-        console.log(req.body)
-        }
-    }, mysql.pool.query("UPDATE Books SET book_owner=(SELECT request_user FROM Swaps WHERE\
+    mysql.pool.query("UPDATE Books SET book_owner=(SELECT request_user FROM Swaps WHERE\
         owning_user=(SELECT userid FROM Users WHERE username=?)\
         AND book=?)",
     [req.body.owner, req.body.bookid],
@@ -323,11 +361,13 @@ app.post("/acceptswap", function (req, res) {
             next(err)
             return;
         } else {
-        console.log(result)
-        res.send(true);
+            console.log(result)
+            console.log(req.body)
+            updateReceiverPoints(req)
         }
     })
-)});
+}
+
 
 app.post("/rejectswap", function (req, res) {
     console.log("received request:", req.body);

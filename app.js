@@ -370,8 +370,7 @@ app.post("/acceptswap", function (req, res) {
 app.post("/rejectswap", function (req, res) {
     console.log("received request:", req.body);
     // book owner rejects swap
-    mysql.pool.query("DELETE FROM Swaps WHERE owning_user=(SELECT userid FROM users WHERE username=?) AND book=?",
-    // alternate bookid check = (SELECT bookid FROM Books WHERE title=?)
+    mysql.pool.query("DELETE FROM Swaps WHERE owning_user=(SELECT userid FROM users WHERE username=?) AND book=(SELECT bookid FROM Books WHERE title=?)",
     [req.body.owner, req.body.bookid],
     function(err, result){
         if(err){

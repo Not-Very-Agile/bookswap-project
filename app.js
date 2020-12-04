@@ -206,7 +206,7 @@ app.post("/signup", function (req, res) {
           return;
         }
         if(result.length == 0){
-          mysql.pool.query("INSERT INTO Users (`username`, `first_name`, `last_name`, `email`, `address`, `password`) VALUES (?,?,?,?,?,?)",
+          mysql.pool.query("INSERT INTO Users (`username`, `first_name`, `last_name`, `email`, `address`, `password`, `points`) VALUES (?,?,?,?,?,?,1)",
             [req.body.user, req.body.first_name, req.body.last_name, req.body.email, req.body.address, req.body.pass],
             function(err, result){
             if(err){
@@ -371,6 +371,7 @@ app.post("/rejectswap", function (req, res) {
     console.log("received request:", req.body);
     // book owner rejects swap
     mysql.pool.query("DELETE FROM Swaps WHERE owning_user=(SELECT userid FROM users WHERE username=?) AND book=?",
+    // alternate bookid check = (SELECT bookid FROM Books WHERE title=?)
     [req.body.owner, req.body.bookid],
     function(err, result){
         if(err){
